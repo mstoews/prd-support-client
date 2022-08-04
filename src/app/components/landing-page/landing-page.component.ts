@@ -18,11 +18,13 @@ import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { getAuth, Auth, authState, signInAnonymously, signOut, User, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { EMPTY, Observable, Subscription } from 'rxjs';
 import { getTreeNoValidDataSourceError } from '@angular/cdk/tree';
+import { GalleryCardComponent } from '../gallery-card/gallery-card.component';
+import { FeatureComponent } from '../feature/feature.component';
 
 
 @Component({
   standalone: true,
-  imports: [RouterModule, GalleryComponent, DndComponent, MaterialModule, CommonModule, IconsModule, MenubarComponent, BlogComponent],
+  imports: [RouterModule, GalleryComponent, FeatureComponent, DndComponent, MaterialModule, CommonModule, IconsModule, MenubarComponent, BlogComponent,GalleryCardComponent],
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   providers: [ GoogleAuthProvider

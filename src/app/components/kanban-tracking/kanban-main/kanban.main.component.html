@@ -1,0 +1,17 @@
+<div class="relative flex flex-col overflow-hidden-x" >
+    <mat-drawer-container class="flex-auto h-full mx-1 dark:bg-transparent" (backdropClick)="onBackdropClicked()">
+        <mat-drawer class="sm: w-128 dark:bg-gray-900" [mode]="drawerMode" [opened]="false" [position]="'end'"
+            [disableClose]="true" #matDrawer>
+            <router-outlet></router-outlet>
+        </mat-drawer>
+        <mat-drawer-content class="flex flex-col overflow-hidden-x bg-color-red w-2xl">
+            <app-kanban-menubar (notifyParentRefresh)="onRefresh()"
+                (notifyMenuItemChanged)="onMenuItemChanged($event)" (notifyParentAdd)="onAdd()"
+                (notifyParentClone)="onClone()" inTitle={{outTitle}} inPartyRef={{outPartyRef}}>
+            </app-kanban-menubar>
+            <div class="flex-auto overflow-y-auto" cdkScrollable>
+                    <app-kanban-group></app-kanban-group>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

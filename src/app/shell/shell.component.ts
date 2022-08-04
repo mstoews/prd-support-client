@@ -8,10 +8,12 @@ import { onMainContentChange } from './animations';
 import { IconsModule } from '../icons.module';
 import { CommonModule } from '@angular/common';
 import { StaticSidebarComponent } from './static-sidebar/static-sidebar.component';
+import { SideNavComponent } from '../components/sidenav/sidenav.component';
+import { FooterComponent } from '../components/footer/footer.component';
 
 @Component({
   standalone: true,
-  imports: [MaterialModule, IconsModule, CommonModule, StaticSidebarComponent],
+  imports: [MaterialModule, IconsModule, CommonModule, StaticSidebarComponent, SideNavComponent, FooterComponent],
   selector: 'app-shell',
   templateUrl: './shell.component.html',
   animations: [onMainContentChange],

@@ -1,0 +1,46 @@
+<mat-tab-group #tabGroup (selectedTabChange)="onTabClick()">
+  
+  <mat-tab label="Kanban">
+    <ng-template matTabContent>
+        <app-kanban-board></app-kanban-board>
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab label="Kanban Board List">
+    <ng-template matTabContent>
+      
+        <kanban-board-list></kanban-board-list>
+      
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab label="Board Tasks">
+    <ng-template matTabContent>
+      
+        <tasks-list></tasks-list>
+      
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab label="Team Members">
+    <ng-template matTabContent>
+      
+        <team-list></team-list>
+      
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab label="Status">
+    <ng-template matTabContent>
+      
+        <status-list></status-list>
+      
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="CSS">
+    <ng-template matTabContent>
+        <app-grid-css></app-grid-css>
+    </ng-template>
+  </mat-tab>
+  
+</mat-tab-group>

@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { RouterModule, Route } from '@angular/router';
 
-const routes: Routes = [
-  {
-    path: 'landing',
-    component: LandingPageComponent,
-    // canActivate: [AuthGuard],
-  },
-
+const routes: Route[] = [
   {
     path: '',
-    component: LandingPageComponent,
+    loadChildren: () => import('./components/landing-page/routes').then( (mod) => mod.LANDING_ROUTES),
+  },
+  {
+    path: 'blog',
+    loadChildren: () => import('./components/blog/routes').then((mod) => mod.BLOG_ROUTES),
+    },
+  {
+    path: 'landing',
+    loadChildren: () => import('./components/landing-page/routes').then( (mod) => mod.LANDING_ROUTES),
   },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
