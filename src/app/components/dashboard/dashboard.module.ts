@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
-import { MaterialModule } from 'src/app/MaterialModule';
+import { MaterialModule } from 'app/MaterialModule';
 import { NgApexchartsModule } from 'ng-apexcharts';
-
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     CommonModule,

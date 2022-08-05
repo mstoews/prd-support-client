@@ -15,14 +15,15 @@ import { KanbanService } from '../module/kanban.service';
 import { Subscription } from 'rxjs';
 import { ITask, IBoard } from '../module/tasks.model';
 import { MatDialog } from '@angular/material/dialog';
-import { PartyService } from 'app/services/party.service';
+import { PartyService } from '../../../services/party.service';
 import { Router } from '@angular/router';
 import { KanbanRefService } from '../module/kanban-party-ref.service';
 import { MatDrawer, MatSidenav } from '@angular/material/sidenav';
 import { IMenuState } from '../module/tasks.model';
 import { IAssignee, IValue, IPriority } from '../module/tasks.model';
-import moment from 'moment';
+// import moment from 'moment';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-kanban-board',
@@ -30,8 +31,9 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
   styleUrls: ['./kanban.board.component.scss']
 })
 export class KanbanBoardComponent implements OnInit, OnDestroy {
-  @ViewChild('drawer') drawer: MatDrawer;
-  taskGroup: UntypedFormGroup;
+  @ViewChild('drawer')
+  drawer!: MatDrawer;
+  taskGroup!: UntypedFormGroup;
   types: IValue[] = [
     { value: 'add', viewValue: 'ADD' },
     { value: 'update', viewValue: 'UPDATE' },
@@ -52,18 +54,18 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
     { value: 'Low', viewValue: 'LOW' },
   ];
 
-  subTeam: Subscription;
-  team: any[];
-  task: ITask;
+  subTeam!: Subscription;
+  team!: any[];
+  task!: ITask;
 
-  action: string;
+  action!: string;
   // tslint:disable-next-line: variable-name
 
   sTitle = 'Add Kanban Task ';
-  cPriority: string;
-  cRAG: string;
-  cType: string;
-  currentDate: Date;
+  cPriority!: string;
+  cRAG!: string;
+  cType!: string;
+  currentDate!: Date;
 
   constructor(
     public dialog: MatDialog,
@@ -78,34 +80,35 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
   @Output() notifyUpdateTaskData: EventEmitter<ITask> = new EventEmitter();
 
   public outTitle = 'KANBAN';
-  public partyRef: string;
-  party: KanbanRefService;
+  public partyRef!: string;
+  party!: KanbanRefService;
   drawOpen: 'open' | 'close' = 'open';
 
   OPEN = 'Open';
   IN_PROGRESS = 'InProgress';
   IN_REVIEW = 'InReview';
   COMPLETED = 'Completed';
-  selected: string;
+  selected!: string;
 
-  subOpen: Subscription;
-  subProgress: Subscription;
-  subReview: Subscription;
-  subComplete: Subscription;
+  subOpen!: Subscription;
+  subProgress!: Subscription;
+  subReview!: Subscription;
+  subComplete!: Subscription;
 
-  openTasks: ITask[];
-  progressTasks: ITask[];
-  reviewTasks: ITask[];
-  completeTasks: ITask[];
-  clientRef: string;
+  openTasks!: ITask[];
+  progressTasks!: ITask[];
+  reviewTasks!: ITask[];
+  completeTasks!: ITask[];
+  clientRef!: string;
 
-  private igMenuChanged: Subscription;
+  private igMenuChanged!: Subscription;
 
   // the following logic should be built out into multi dimentional array of broads and tasks
-  allBoards: IBoard[];
+  allBoards!: IBoard[];
   public selectedTask: any;
 
-  @ViewChild('drawer') public sidenav: MatSidenav;
+  @ViewChild('drawer')
+  public sidenav!: MatSidenav;
 
   ngOnInit(): void {
     if (this.partyRef === undefined) {
@@ -116,7 +119,7 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
     this.igMenuChanged = this.kanbanRefService.kanbanRefUpdated.subscribe(
       (menuState: IMenuState) => {
         this.partyRef = menuState.partyRef;
-        this.clientRef = menuState.clientRef;
+        // this.clientRef = menuState.clientRef;
         this.refreshData(this.partyRef);
       }
     );
@@ -205,7 +208,7 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
     });
   }
 
-  create(data) {
+  create(data: any) {
     console.log('create or copy task', data);
     this.kanbanService
       .KanbanCreate(data)
@@ -213,7 +216,7 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
     this.toggleDrawer();
   }
 
-  update(data) {
+  update(data: { client_ref: string; task_id: string; party_ref: string; }) {
     console.log('Update Task', data);
     data.client_ref = 'BARCLAYS';
     this.kanbanService
@@ -222,12 +225,12 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
     this.toggleDrawer();
   }
 
-  delete(data) {
+  delete(data: { task_id: string; party_ref: string; }) {
     this.kanbanService.kanbanDelete(data.task_id).subscribe(
-      (value) => {
+      (value: any) => {
         this.refreshData(data.party_ref);
       },
-      (error) => {
+      (error: { message: any; }) => {
         console.log(error.message);
       }
     );
@@ -241,7 +244,7 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
       .subscribe((task) => (this.allBoards = task));
   }
 
-  onVerify(data) {
+  onVerify(data: any) {
     //  console.log (`Verify data: ${data}`);
   }
 
@@ -312,7 +315,7 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
     const cnt = previousData.length;
     if (cnt > 0) {
       let i = 1;
-      previousData.forEach((task) => {
+      previousData.forEach((task: { rankid: number; task_id: string; }) => {
         task.rankid = i;
         this.kanbanService.kanbanUpdate(task.task_id, task).subscribe({
           next: (value) => console.log(`Previous container data: ${value}`),
@@ -334,7 +337,7 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
     const cnt = newData.length;
     if (cnt > 0) {
       let i = 1;
-      newData.forEach((task) => {
+      newData.forEach((task: { status: string; rankid: number; task_id: string; }) => {
         task.status = newContainerId;
         task.rankid = i;
         this.kanbanService.kanbanUpdate(task.task_id, task).subscribe({
@@ -349,22 +352,22 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
     return item.id || index;
   }
 
-  isOverdue(): boolean {
-    return moment(this.task.due_date, moment.ISO_8601).isBefore(
-      moment(),
-      'days'
-    );
-  }
+  // isOverdue(): boolean {
+  //   return moment(this.task.due_date, moment.ISO_8601).isBefore(
+  //     moment(),
+  //     'days'
+  //   );
+  // }
 
-  changePriority(data) {
+  changePriority(data: string) {
     this.cPriority = data;
   }
 
-  changeRag(data) {
+  changeRag(data: string) {
     this.cRAG = data;
   }
 
-  changeType(data) {
+  changeType(data: string) {
     this.cType = data;
   }
 
@@ -409,26 +412,26 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
     }
   }
 
-  onCreate(data) {
+  onCreate(data: any) {
     data = this.taskGroup.getRawValue();
     this.create(data);
   }
 
-  onUpdate(data) {
+  onUpdate(data: any) {
     data = this.taskGroup.getRawValue();
     this.update(data);
   }
 
-  onDelete(data) {
+  onDelete(data: any) {
     data = this.taskGroup.getRawValue();
     this.delete(data);
   }
 
-  onAddComment(data) {
+  onAddComment(data: any) {
     console.log(`onADdComment ${data}`);
   }
 
-  onAssignment(data) {
+  onAssignment(data: any) {
     console.log(`${data}`);
   }
 
@@ -441,6 +444,6 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
     this.subProgress.unsubscribe();
     this.subReview.unsubscribe();
     this.subComplete.unsubscribe();
-    this.subTeam.unsubscribe();  
+    this.subTeam.unsubscribe();
   }
 }

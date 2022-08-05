@@ -14,6 +14,14 @@ const routes: Route[] = [
     path: 'landing',
     loadChildren: () => import('./components/landing-page/routes').then( (mod) => mod.LANDING_ROUTES),
   },
+  {
+    path: 'tasks',
+    loadChildren: () =>
+      import('./components/kanban-tracking/module/kanban.module').then(
+        (m) => m.KanbanTasksModule
+      ),
+    // canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

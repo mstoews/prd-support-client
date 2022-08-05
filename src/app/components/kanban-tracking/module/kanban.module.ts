@@ -11,7 +11,6 @@ import { TypeListComponent } from '../lists/type-list/type-list.component';
 import { PriorityListComponent } from '../lists/priority-list/priority-list.component';
 import { StatusListComponent } from '../lists/status-list/status-list.component';
 import { TasksListComponent } from '../lists/tasks-list/tasks-list.component';
-import { GridCssComponent } from '../pages/grid-css/grid-css.component';
 import { KanbanService } from '../module/kanban.service';
 import { KanbanCommonModule } from './kanban.common.module';
 import { KanbanRefService } from './kanban-party-ref.service';
@@ -22,7 +21,7 @@ import { AgChartsAngularModule } from 'ag-charts-angular';
 import { SidenavService } from '../sidenav.service';
 import { PriorityFormComponent } from '../lists/priority-list/priority.form';
 import { TypeFormComponent } from '../lists/type-list/types.form';
-import { KanbanCloneComponent } from '../kanban-board/clone.form'; 
+import { KanbanCloneComponent } from '../kanban-board/clone.form';
 import { TeamListComponent } from '../lists/team-list/team-list.component';
 import { TeamMemberFormComponent } from '../lists/team-list/member.form';
 import { StatusComponent } from '../lists/status-list/status.component';
@@ -56,7 +55,6 @@ const routes: Routes = [
         PriorityListComponent,
         TasksListComponent,
         KanbanMainComponent,
-        GridCssComponent,
         KanbanMenubarComponent,
         DnDTreeComponent,
         PriorityFormComponent,

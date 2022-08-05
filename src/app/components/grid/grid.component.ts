@@ -80,7 +80,7 @@ import { DndJSONComponent } from './loadjsondnd/dnd.json.component';
 export class GridAGComponent implements OnInit {
   frameworkComponents;
   progress = 0;
-  timer: number;
+  timer!: number;
   constructor(
     private partyService: PartyService,
     private matDialog: MatDialog,
@@ -95,7 +95,8 @@ export class GridAGComponent implements OnInit {
     });
     this.frameworkComponents = { checkboxRenderer: CheckboxRenderer };
   }
-  @ViewChild('agGrid') agGrid: AgGridAngular;
+  @ViewChild('agGrid')
+  agGrid!: AgGridAngular;
 
   @Output() private notifyOpenDialog: EventEmitter<any> = new EventEmitter();
   @Output() private notifyCellChange: EventEmitter<any> = new EventEmitter();
@@ -104,7 +105,7 @@ export class GridAGComponent implements OnInit {
   rowSelection = 'multiple';
   showBar = false;
   page = 0;
-  private gridApi;
+  private gridApi!: { getSelectedRows?: any; sizeColumnsToFit?: () => void; };
   private gridColumnApi: any;
   public colDef: any;
   // public autoGroupColumnDef: { minWidth: number; };
@@ -112,8 +113,10 @@ export class GridAGComponent implements OnInit {
   public paginationPageSize = 20;
   // public getRowNodeId;
 
-  @Input() public cols: any[];
-  @Input() public rows: any[];
+  @Input()
+  public cols!: any[];
+  @Input()
+  public rows!: any[];
   @Input() public defaultColDef: any;
 
   startOrResumeTimer() {
@@ -212,7 +215,7 @@ export class GridAGComponent implements OnInit {
     this.openJSONDialog();
   }
 
-  onFileSelect(event) {
+  onFileSelect(event: { target: { files: File[]; }; }) {
     const selectedFile: File = event.target.files[0];
     const fileReader: FileReader = new FileReader();
     fileReader.onload = (e) => {

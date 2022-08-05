@@ -2,11 +2,10 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
-import * as glossApi from 'app/services/api.service';
-import { ITask } from './tasks.model';
-import { KanbanAssigneeGQL, UsersGQL } from '../../../services/api.service';
-import { PartyService } from 'app/services/party.service';
+import * as glossApi from '../../../services/api.service';
+import { PartyService } from '../../../services/party.service';
 import { StatusType } from '../lists/status-list/status.types';
+import { ITask } from './tasks.model';
 
 export type TaskArray = {
   tasks: ITask[];
@@ -16,13 +15,6 @@ export type TaskArray = {
   providedIn: 'root',
 })
 export class KanbanService {
-  public PRIORITY: glossApi.Kb_Priority[];
-
-  private partyRef: string;
-  private partyType: string;
-  private clientRef: string;
-  private selectedTab: string;
-  private isPartyTypeSelected: boolean;
 
   constructor(
     // Kanban Task
@@ -40,16 +32,16 @@ export class KanbanService {
     private readonly kanbanTaskByTaskId: glossApi.KanbanTaskByTaskIdGQL,
     private readonly updateTaskParentId: glossApi.UpdateTaskParentIdGQL,
     private readonly partyByTypeGQL: glossApi.PartyByTypeGQL,
-    private readonly kanbanAssigneeGQL: KanbanAssigneeGQL,
+    private readonly kanbanAssigneeGQL: glossApi.KanbanAssigneeGQL,
     private readonly kanbanStatusByIdGQL: glossApi.KanbanStatusByIdGQL,
     private readonly partyService: PartyService,
-    private readonly usersGQL: UsersGQL,
+    private readonly usersGQL: glossApi.UsersGQL,
 
   ) {}
 
   // tslint:disable-next-line:variable-name
 
-  public currentTask: ITask;
+  public currentTask: ITask | undefined;
 
   public taskUpdated = new EventEmitter<ITask>();
 
@@ -124,7 +116,7 @@ export class KanbanService {
         return this._status.asObservable();
     }
 
-    
+
   get statuses$(): Observable<StatusType[]>
   {
         return this._statuses.asObservable();
@@ -136,7 +128,7 @@ export class KanbanService {
       .watch()
       .valueChanges.pipe(map((result) => result.data.KanbanStatus));
     }
-  
+
   //   return this._httpClient.get<Task[]>('api/apps/tasks/all').pipe(
   //     tap((response) => {
   //         this._tasks.next(response);
@@ -147,7 +139,7 @@ export class KanbanService {
   public getStatusById(statusId: string): any {
     const kanbanStatus$ = this.kanbanStatusByIdGQL
       .watch()
-      .valueChanges.pipe(map((result) => result.data.KanbanStatusById));    
+      .valueChanges.pipe(map((result) => result.data.KanbanStatusById));
   }
 
   public getKanbanType() {
@@ -199,7 +191,7 @@ export class KanbanService {
     });
   }
 
-  dateFormatter(params) {
+  dateFormatter(params: { value: any; }) {
     const dateAsString = params.value;
     // //  console.log (dateAsString.slice(0, 10));
     const dateParts = dateAsString.split('-');
@@ -296,7 +288,7 @@ export class KanbanService {
       {
         headerName: 'RAG',
         field: 'color',
-        cellStyle: (params) => {
+        cellStyle: (params: { value: string; }) => {
           if (params.value === '#238823') {
             return { color: params.value, backgroundColor: params.value };
           } else if (params.value === '#FFBF00') {
@@ -306,6 +298,9 @@ export class KanbanService {
             };
           } else if (params.value === '#D2222D') {
             return { color: params.value, backgroundColor: params.value };
+          }
+          else{
+            return { color: params.value, backgroundColor: '#238823' };
           }
         },
       },
