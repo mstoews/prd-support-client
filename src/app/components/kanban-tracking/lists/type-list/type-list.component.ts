@@ -14,7 +14,10 @@ export interface ActionType {
   // templateUrl: './type-list.component.html'
   template: `
     <ng-container *ngIf="actionType | async as rows">
-      <grid [cols]="cols" [rows]="rows" (notifyOpenDialog)="onNotify($event)">
+      <grid
+      [cols]="cols"
+      [rows]="rows"
+      (notifyOpenDialog)="onNotify($event)">
       </grid>
     </ng-container>
   `,

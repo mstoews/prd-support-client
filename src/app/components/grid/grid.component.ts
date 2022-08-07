@@ -64,7 +64,6 @@ import { DndJSONComponent } from './loadjsondnd/dnd.json.component';
       (rowClicked)="onSelectionChanged($event)"
       (cellEditingStarted)="onCellEditingStarted($event)"
       (cellEditingStopped)="onCellEditingStopped($event)"
-      [rowSelection]="rowSelection"
       [modules]="modules"
       (cellValueChanged)="onCellValueChanged($event)"
       [frameworkComponents]="frameworkComponents"
@@ -102,7 +101,7 @@ export class GridAGComponent implements OnInit {
   @Output() private notifyCellChange: EventEmitter<any> = new EventEmitter();
   @Output() private notifyFileUpload: EventEmitter<any> = new EventEmitter();
 
-  rowSelection = 'multiple';
+  rowSelection = '"multiple"';
   showBar = false;
   page = 0;
   private gridApi!: { getSelectedRows?: any; sizeColumnsToFit?: () => void; };
@@ -178,13 +177,7 @@ export class GridAGComponent implements OnInit {
 
   onRefreshGrid() {}
 
-  onGridReady(params: {
-    api: { sizeColumnsToFit: () => void };
-    columnApi: any;
-    setRowData: any;
-    refreshCells: any;
-    onMenuOpened: any;
-  }) {
+  onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     params.api.sizeColumnsToFit();

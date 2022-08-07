@@ -1,6 +1,6 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,6 +25,26 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
+import { SideNavComponent } from '../../components/sidenav/sidenav.component';
+import { FooterComponent } from '../../components/footer/footer.component';
+import { ShellComponent } from '../shell.component';
+import { MenubarComponent } from 'app/components/menubar/menubar.component';
+import { NavItemComponent } from '../static-sidebar/nav-list-item/nav-item.component';
+import { StaticSidebarComponent } from '../static-sidebar/static-sidebar.component';
+import { LandingPageComponent } from 'app/components/landing-page/landing-page.component';
+import { FeatureComponent } from '../../components/feature/feature.component';
+import { SharedRoutingModule } from './shared-routing.module';
+import { AlertsComponent } from '../../components/alerts/alerts.component';
+
+const components = [
+  ShellComponent,
+  LandingPageComponent,
+  StaticSidebarComponent,
+  MenubarComponent,
+  NavItemComponent,
+  FooterComponent,
+  SideNavComponent,
+];
 
 const modules = [
   CommonModule,
@@ -55,11 +75,15 @@ const modules = [
   MatTooltipModule,
   MatProgressSpinnerModule,
   MatAutocompleteModule,
+  SharedRoutingModule,
+  FeatureComponent,
+  AlertsComponent,
 ];
 
-@NgModule({
 
+@NgModule({
+  declarations: [...components],
   imports: [...modules],
-  exports: [...modules],
+  exports: [...components, ...modules],
 })
 export class SharedModule {}

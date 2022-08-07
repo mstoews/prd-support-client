@@ -15,6 +15,8 @@ import { PartyService } from 'app/services/party.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ProgressComponent } from '../progress/progress.component';
+import { IconsModule } from 'app/icons.module';
 
 // ModuleRegistry.registerModules([ClientSideRowModelModule, CsvExportModule]);
 
@@ -33,7 +35,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatProgressSpinnerModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    ProgressComponent,
+    IconsModule,
   ],
   exports: [GridAGComponent],
   providers: [MenuBarService, PartyService],

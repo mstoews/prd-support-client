@@ -11,19 +11,20 @@
       <div class="hidden h-10 text-2xl font-alata md:flex md:space-x-8">
         <div class="text-gray-200 uppercase text-1xl group">
           <!-- <a (click)="onEvent()">Events</a> -->
-          <a href="#dashboard">Dashboard</a>
+          <button class="uppercase" (click)="scrollToId('alerts')">Alerts</button>
           <div class="mx-2 group-hover:border-b group-hover:border-blue-50"></div>
         </div>
         <div class="text-gray-200 uppercase text-1xl group">
-          <a href="#service-requests">Service Requests</a>
+          <button class="uppercase" (click)="scrollToId('service-request')">Service request</button>
           <div class="mx-2 group-hover:border-b group-hover:border-blue-50"></div>
         </div>
         <div class="text-gray-200 uppercase text-1xl group">
-          <a href="#incidents">Incidents</a>
+
+          <button class="uppercase" (click)="scrollToId('incidents')">incidents</button>
           <div class="mx-2 group-hover:border-b group-hover:border-blue-50"></div>
         </div>
         <div class="text-gray-200 uppercase text-1xl group">
-          <a href="#tasks">Tasks</a>
+          <button class="uppercase" (click)="scrollToId('tasks')">tasks</button>
           <div class="mx-2 group-hover:border-b group-hover:border-blue-50"></div>
         </div>
 
@@ -56,24 +57,24 @@
 </section>
 
 <!-- Dashboard Section -->
-<section id="dashboard" class="scroll-mt-20">
+<section id="alerts" class="scroll-mt-20">
 
   <div class="container px-6 mx-auto my-32 text-gray-900 max-w-8xl md:px-0">
     <!-- Creations Header -->
     <div class="relative justify-center my-32 mb-20 md:justify-between">
       <p class="text-4xl text-center uppercase md:text-left md:text-5xl">
-        dashboard
+        alerts and warnings
       </p>
-      <a href="#"
-        class="absolute top-0 right-0 items-center text-2xl font-normal text-gray-100 align-middle rounded-lg btn dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700">
+      <button class="uppercase" (click)="scrollToId('hero')"
+        class="absolute top-0 items-center text-2xl font-normal text-gray-100 align-middle rounded-lg right-1 btn dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700">
         <mat-icon [svgIcon]="'heroicons_solid:arrow-up'"></mat-icon>
-      </a>
+      </button>
     </div>
-    <app-feature></app-feature>
+    <app-alerts></app-alerts>
   </div>
 </section>
 
-<section id="service-requests" class="scroll-mt-20">
+<section id="service-request" class="scroll-mt-20">
   <!-- Service Requests Container -->
   <div class="container px-6 mx-auto my-32 text-gray-900 max-w-8xl md:px-0">
     <!-- Creations Header -->
@@ -81,12 +82,12 @@
       <p class="text-4xl text-center uppercase md:text-left md:text-5xl">
         service requests
       </p>
-      <a href="#"
-        class="absolute top-0 right-0 items-center text-2xl font-normal text-gray-100 align-middle rounded-lg btn dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700">
+      <button class="uppercase" (click)="scrollToId('hero')"
+        class="absolute top-0 items-center text-2xl font-normal text-gray-100 align-middle rounded-lg right-1 btn dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700">
         <mat-icon [svgIcon]="'heroicons_solid:arrow-up'"></mat-icon>
-      </a>
+      </button>
     </div>
-
+    <app-feature></app-feature>
   </div>
 </section>
 
@@ -98,12 +99,12 @@
       <p class="text-4xl text-center uppercase md:text-left md:text-5xl">
         incidents
       </p>
-      <a href="#"
-        class="absolute top-0 right-0 items-center text-2xl font-normal text-gray-100 align-middle rounded-lg btn dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700">
+      <button class="uppercase" (click)="scrollToId('hero')"
+        class="absolute top-0 right-1 items-center text-2xl font-normal text-gray-100 align-middle rounded-lg btn dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700">
         <mat-icon [svgIcon]="'heroicons_solid:arrow-up'"></mat-icon>
-      </a>
+      </button>
     </div>
-
+    <app-feature></app-feature>
   </div>
 </section>
 
@@ -115,11 +116,11 @@
       <p class="text-4xl text-center uppercase md:text-left md:text-5xl">
         tasks
       </p>
-      <a href="#"
-        class="absolute top-0 right-0 items-center text-2xl font-normal text-gray-100 align-middle rounded-lg btn dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700">
+      <button class="uppercase" (click)="scrollToId('hero')"
+        class="absolute top-0 right-1 items-center text-2xl font-normal text-gray-100 align-middle rounded-lg btn dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700">
         <mat-icon [svgIcon]="'heroicons_solid:arrow-up'"></mat-icon>
-      </a>
+      </button>
     </div>
-
+    <app-feature></app-feature>
   </div>
 </section>

@@ -11,16 +11,16 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { MaterialModule } from './MaterialModule';
 import { CommonModule } from '@angular/common';
-import { ShellComponent } from './shell/shell.component';
 import { NavService } from './shell/static-sidebar/nav-list-item/nav-service';
+import { SharedModule } from './shell/shared-module/shared.module';
+import { IconsModule } from './icons.module';
+import { ScrollService } from './services/scroll.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -33,13 +33,13 @@ import { NavService } from './shell/static-sidebar/nav-list-item/nav-service';
     provideFunctions(() => getFunctions()),
     providePerformance(() => getPerformance()),
     provideStorage(() => getStorage()),
-    LandingPageComponent,
-    ShellComponent,
     MaterialModule,
     CommonModule,
+    IconsModule,
+    SharedModule
   ],
   providers: [
-    ScreenTrackingService,UserTrackingService, NavService
+    ScreenTrackingService,UserTrackingService, NavService, ScrollService
   ],
   bootstrap: [AppComponent]
 })
