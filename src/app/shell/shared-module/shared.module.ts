@@ -25,7 +25,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
-import { SideNavComponent } from '../../components/sidenav/sidenav.component';
+import { SideNavComponent } from '../sidenav/sidenav.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ShellComponent } from '../shell.component';
 import { MenubarComponent } from 'app/components/menubar/menubar.component';

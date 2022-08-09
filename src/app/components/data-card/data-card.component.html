@@ -1,0 +1,33 @@
+<div class="flex flex-col flex-auto overflow-hidden bg-gray-300 shadow sm:col-span-2 lg:col-span-1 bg-card rounded-2xl">
+  <div class="flex items-start justify-between m-6 mb-0">
+    <div class="text-lg font-medium leading-6 tracking-tight truncate">{{title}}</div>
+    <div class="ml-2">
+      <button class="h-6 px-2 rounded-full min-h-6 bg-hover" mat-button [matMenuTriggerFor]="conversionMenu">
+        <span class="text-sm font-medium text-blue-700 text-secondary">30 days</span>
+      </button>
+      <mat-menu #conversionMenu="matMenu">
+        <button mat-menu-item>30 days</button>
+        <button mat-menu-item>60 days</button>
+        <button mat-menu-item>90 days</button>
+      </mat-menu>
+    </div>
+  </div>
+  <div class="flex flex-col mx-6 mt-3 lg:flex-row lg:items-center">
+    <div class="font-bold leading-tight tracking-tighter text-7xl">{{amount | number:'1.0-0'}}</div>
+    <div class="flex lg:flex-col lg:ml-3">
+      <div *ngIf="trending; else down">
+        <mat-icon class="text-green-500 icon-size-10" [svgIcon]="'heroicons_solid:trending-up'"></mat-icon>
+      </div>
+      <div class="flex items-center ml-1 lg:ml-0 lg:mt-0.5 text-md leading-none whitespace-nowrap text-secondary">
+        <span class="font-medium text-green-800">{{percentage_change}}</span>
+        <span class="ml-1 text-blue-500 text-1xl">{{comment}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col flex-auto">
+  </div>
+</div>
+
+<ng-template #down>
+  <mat-icon class="text-red-500 icon-size-10" [svgIcon]="'heroicons_solid:trending-down'"></mat-icon>
+</ng-template>

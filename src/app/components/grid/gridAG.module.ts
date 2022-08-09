@@ -24,8 +24,6 @@ import { IconsModule } from 'app/icons.module';
   declarations: [
     GridAGComponent,
     CheckboxRenderer,
-    DndComponent,
-    DndJSONComponent,
   ],
   imports: [
     CommonModule,

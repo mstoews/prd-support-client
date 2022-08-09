@@ -6,10 +6,12 @@
     "start": "ng serve --port 4206",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "gql": "graphql-codegen --config codegen.yml"
   },
   "private": true,
   "dependencies": {
+    "@ag-grid-community/angular": "^28.1.0",
     "@angular/animations": "^14.1.1",
     "@angular/cdk": "^14.1.1",
     "@angular/common": "^14.1.1",
@@ -29,6 +31,8 @@
     "apollo-angular": "^3.0.1",
     "apollo-link-context": "^1.0.20",
     "daisyui": "^2.19.0",
+    "fast-xml-parser": "^4.0.9",
+    "firebase": "^9.9.2",
     "graphql": "^16.5.0",
     "graphql-codegen": "^0.4.0",
     "graphql-tag": "^2.12.6",
@@ -46,7 +50,7 @@
     "@angular-devkit/build-angular": "^14.1.1",
     "@angular/cli": "~14.1.1",
     "@angular/compiler-cli": "^14.1.1",
-    "@graphql-codegen/cli": "^2.11.3",
+    "@graphql-codegen/cli": "2.11.5",
     "@types/jasmine": "~4.0.0",
     "autoprefixer": "^10.4.7",
     "jasmine-core": "~4.1.0",
@@ -57,6 +61,10 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.6",
-    "typescript": "~4.7.2"
+    "typescript": "~4.7.2",
+    "@graphql-codegen/typescript": "2.7.3",
+    "@graphql-codegen/typescript-operations": "2.5.3",
+    "@graphql-codegen/typescript-apollo-angular": "3.5.3",
+    "@graphql-codegen/introspection": "2.2.1"
   }
 }

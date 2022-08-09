@@ -13,7 +13,7 @@ const routes: Route[] = [
   },
   {
     path: '',
-    redirectTo: '/landing',
+    redirectTo: '/landing/dashboard',
     pathMatch: 'full',
   },
 ];

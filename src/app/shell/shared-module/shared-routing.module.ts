@@ -9,6 +9,11 @@ const routes: Routes = [
     pathMatch: 'full',
     component: LandingPageComponent,
   },
+  {
+    path: 'service-request',
+    pathMatch: 'full',
+    component: LandingPageComponent,
+  },
 ];
 
 @NgModule({

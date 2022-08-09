@@ -17,6 +17,7 @@ import { NavService } from './shell/static-sidebar/nav-list-item/nav-service';
 import { SharedModule } from './shell/shared-module/shared.module';
 import { IconsModule } from './icons.module';
 import { ScrollService } from './services/scroll.service';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ScrollService } from './services/scroll.service';
     MaterialModule,
     CommonModule,
     IconsModule,
-    SharedModule
+    SharedModule,
+    GraphQLModule
   ],
   providers: [
     ScreenTrackingService,UserTrackingService, NavService, ScrollService

@@ -20,7 +20,13 @@
             "tsConfig": "tsconfig.app.json",
             "allowedCommonJsDependencies": [
               "lodash",
-              "apexcharts"
+              "apexcharts",
+              "graphql-tag",
+              "zen-observable",
+              "highlight.js",
+              "ng-apexcharts",
+              "fast-xml-parser",
+              "fast-json-stable-stringify"
             ],
             "assets": [
               "src/favicon.ico",

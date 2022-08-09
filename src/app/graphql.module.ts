@@ -34,7 +34,11 @@ const defaultOpts: DefaultOptions = {
 };
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
-  const uri = localStorage.getItem('uri');
+  console.log('createApollo');
+  let uri = localStorage.getItem('uri');
+  if (uri === null) {
+    uri = 'http://localhost:3015/graphql';
+  }
   return {
     link: httpLink.create({ uri }),
     cache: new InMemoryCache({

@@ -2,42 +2,15 @@
 
   <div class="flex flex-wrap w-full max-w-screen-xl p-6 mx-auto md:p-8">
 
-    <!-- Title and action buttons -->
-    <!-- <div class="flex items-center justify-between w-full">
-      <div>
-        <div class="text-3xl font-semibold leading-8 tracking-tight"></div>
-        <div class="font-medium tracking-tight text-secondary"></div>
-      </div>
-      <div class="flex items-center ml-6">
-        <button class="hidden sm:inline-flex" mat-stroked-button>
-          <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:cog'"></mat-icon>
-          <span class="ml-2">Settings</span>
-        </button>
-        <button class="hidden ml-3 sm:inline-flex" mat-flat-button [color]="'primary'">
-          <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:save'"></mat-icon>
-          <span class="ml-2">Export</span>
-        </button>
-        <div class="sm:hidden">
-          <button [matMenuTriggerFor]="actionsMenu" mat-icon-button>
-            <mat-icon [svgIcon]="'heroicons_outline:dots-vertical'"></mat-icon>
-          </button>
-          <mat-menu #actionsMenu="matMenu">
-            <button mat-menu-item>Export</button>
-            <button mat-menu-item>Settings</button>
-          </mat-menu>
-        </div>
-      </div>
-    </div> -->
-
     <div class="grid w-full grid-cols-1 gap-8 mt-8 sm:grid-cols-2 lg:grid-cols-3">
-      <!-- Visitors overview -->
+      <!-- Alerts Overview -->
       <div
         class="flex flex-col flex-auto overflow-hidden bg-gray-200 shadow sm:col-span-2 lg:col-span-3 dark bg-card rounded-2xl">
         <div class="flex items-center justify-between mt-10 ml-10 mr-6 sm:mr-10">
           <div class="flex flex-col">
             <div class="mr-4 text-2xl font-semibold leading-7 tracking-tight md:text-3xl">Alerts and Warning History
             </div>
-            <div class="font-medium text-secondary">Average Alerts per Day</div>
+            <div class="font-medium text-blue-400">Average Alerts per Day</div>
           </div>
           <div class="ml-2">
           </div>
@@ -50,103 +23,13 @@
           </apx-chart>
         </div>
       </div>
-      <!-- Conversions -->
-      <div class="flex flex-col flex-auto overflow-hidden bg-gray-300 shadow sm:col-span-2 lg:col-span-1 bg-card rounded-2xl">
-        <div class="flex items-start justify-between m-6 mb-0">
-          <div class="text-lg font-medium leading-6 tracking-tight truncate">GLOSS</div>
-          <div class="ml-2">
-            <button class="h-6 px-2 rounded-full min-h-6 bg-hover" mat-button [matMenuTriggerFor]="conversionMenu">
-              <span class="text-sm font-medium text-secondary">30 days</span>
-            </button>
-            <mat-menu #conversionMenu="matMenu">
-              <button mat-menu-item>30 days</button>
-              <button mat-menu-item>3 months</button>
-              <button mat-menu-item>9 months</button>
-            </mat-menu>
-          </div>
-        </div>
-        <div class="flex flex-col mx-6 mt-3 lg:flex-row lg:items-center">
-          <div class="font-bold leading-tight tracking-tighter text-7xl">{{amount | number:'1.0-0'}}</div>
-          <div class="flex lg:flex-col lg:ml-3">
-            <mat-icon class="text-red-500 icon-size-5" [svgIcon]="'heroicons_solid:trending-down'"></mat-icon>
-            <div class="flex items-center ml-1 lg:ml-0 lg:mt-0.5 text-md leading-none whitespace-nowrap text-secondary">
-              <span class="font-medium text-red-500">2%</span>
-              <span class="ml-1">below target</span>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col flex-auto h-60">
-          <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [yaxis]="chartOptions.yaxis"
-            [xaxis]="chartOptions.xaxis" [labels]="chartOptions.labels" [stroke]="chartOptions.stroke"
-            [title]="chartOptions.title" [dataLabels]="chartOptions.dataLabels" [fill]="chartOptions.fill"
-            [tooltip]="chartOptions.tooltip">
-          </apx-chart>
-        </div>
-      </div>
-      <!-- Impressions -->
-      <div class="flex flex-col flex-auto overflow-hidden bg-gray-300 shadow bg-card rounded-2xl">
-        <div class="flex items-start justify-between m-6 mb-0">
-          <div class="text-lg font-medium leading-6 tracking-tight truncate">ACM</div>
-          <div class="ml-2">
-            <button class="h-6 px-2 rounded-full min-h-6 bg-hover" mat-button [matMenuTriggerFor]="impressionsMenu">
-              <span class="text-sm font-medium text-secondary">30 days</span>
-            </button>
-            <mat-menu #impressionsMenu="matMenu">
-              <button mat-menu-item>30 days</button>
-              <button mat-menu-item>3 months</button>
-              <button mat-menu-item>9 months</button>
-            </mat-menu>
-          </div>
-        </div>
-        <div class="flex flex-col mx-6 mt-3 lg:flex-row lg:items-center">
-          <div class="font-bold leading-tight tracking-tighter text-7xl">{{amount | number:'1.0-0'}}</div>
-          <div class="flex lg:flex-col lg:ml-3">
-            <mat-icon class="text-red-500 icon-size-5" [svgIcon]="'heroicons_solid:trending-down'"></mat-icon>
-            <div class="flex items-center ml-1 lg:ml-0 lg:mt-0.5 text-md leading-none whitespace-nowrap text-secondary">
-              <span class="font-medium text-red-500">4%</span>
-              <span class="ml-1">below target</span>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col flex-auto h-20">
-          <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [yaxis]="chartOptions.yaxis"
-            [xaxis]="chartOptions.xaxis" [labels]="chartOptions.labels" [stroke]="chartOptions.stroke"
-            [title]="chartOptions.title" [dataLabels]="chartOptions.dataLabels" [fill]="chartOptions.fill"
-            [tooltip]="chartOptions.tooltip">
-          </apx-chart>
-        </div>
-      </div>
+      <!-- GLOSS -->
+      <app-data-card [title]="'GLOSS'" [amount]="14" [trending]=true [comment]="'meeting expectation'"></app-data-card>
+      <!-- ACM -->
+      <app-data-card [title]="'ACM'" [amount]="3" [trending]=false [comment]="'below expectation'"></app-data-card>
       <!-- BOJ and JASDEC -->
-      <div class="flex flex-col flex-auto overflow-hidden bg-gray-300 shadow bg-card rounded-2xl">
-        <div class="flex items-start justify-between m-6 mb-0">
-          <div class="text-lg font-medium leading-6 tracking-tight truncate">BOJ and JASDEC</div>
-          <div class="ml-2">
-            <button class="h-6 px-2 rounded-full min-h-6 bg-hover" mat-button [matMenuTriggerFor]="impressionsMenu">
-              <span class="text-sm font-medium text-secondary">30 days</span>
-            </button>
-            <mat-menu #impressionsMenu="matMenu">
-              <button mat-menu-item>1 month</button>
-              <button mat-menu-item>3 months</button>
-              <button mat-menu-item>6 months</button>
-            </mat-menu>
-          </div>
-        </div>
-        <div class="flex flex-col mx-6 mt-3 lg:flex-row lg:items-center">
-          <div class="font-bold leading-tight tracking-tighter text-7xl">{{amount | number:'2.0-0'}}</div>
-          <div class="flex lg:flex-col lg:ml-3">
-            <mat-icon class="text-red-500 icon-size-5" [svgIcon]="'heroicons_solid:trending-down'"></mat-icon>
-            <div class="flex items-center ml-1 lg:ml-0 lg:mt-0.5 text-md leading-none whitespace-nowrap text-secondary">
-              <span class="font-medium text-red-500">4%</span>
-              <span class="ml-1">below target</span>
-            </div>
-          </div>
-        </div>
-        <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [yaxis]="chartOptions.yaxis"
-          [xaxis]="chartOptions.xaxis" [labels]="chartOptions.labels" [stroke]="chartOptions.stroke"
-          [title]="chartOptions.title" [dataLabels]="chartOptions.dataLabels" [fill]="chartOptions.fill"
-          [tooltip]="chartOptions.tooltip">
-        </apx-chart>
-      </div>
+      <app-data-card [title]="'BOJ & JASDEC'" [amount]="8" [trending]=true [comment]="'meeting expectation'"></app-data-card>
+
     </div>
   </div>
 

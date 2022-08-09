@@ -33,9 +33,10 @@ export class DndJSONComponent {
   ) {
     this.createForm();
   }
-  @ViewChild('fileDropRef', { static: false }) fileDropEl: ElementRef;
+  @ViewChild('fileDropRef', { static: false })
+  fileDropEl!: ElementRef;
   files: any[] = [];
-  formGroup: UntypedFormGroup;
+  formGroup!: UntypedFormGroup;
   fileData: any;
   VERSION_NO = 1;
 
@@ -46,11 +47,11 @@ export class DndJSONComponent {
   }
 
   // tslint:disable-next-line:member-ordering
-  onFileDropped($event): void {
+  onFileDropped($event: any[]): void {
     this.prepareFilesList($event);
   }
 
-  fileBrowseHandler(files) {
+  fileBrowseHandler(files: any[]) {
     this.prepareFilesList(files);
   }
 
@@ -109,19 +110,18 @@ export class DndJSONComponent {
     for (const item of this.files) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        const fileString = e.target.result as string;
+        const fileString = e.target?.result as string;
         const parser = new XMLParser(options);
         data = parser.parse(fileString) as any;
         this.processFileDataFromJson(data);
-
       };
       reader.readAsText(item);
-      reader.onerror = this.errorHandler;
+      // reader.onerror = this.errorHandler;
     }
     this.dialogRef.close({ event: 'Cancel' });
   }
 
-  errorHandler(evt): any {
+  errorHandler(evt: { target: { error: { name: string; }; }; }): any {
     if (evt.target.error.name === 'NotReadableError') {
       console.log(
         'File can not be read properly ... please makes sure the file is xml'
@@ -143,7 +143,7 @@ export class DndJSONComponent {
     console.log('Process a file');
     const data = JSON.parse(filedata);
     for (const element of data) {
-      this.partyService.createdatabase(element);
+      // this.partyService.createdatabase(element);
     }
   }
 
@@ -151,7 +151,7 @@ export class DndJSONComponent {
     this.dialogRef.close({ event: 'Cancel' });
   }
 
-formatBytes(bytes, decimals = 2) {
+formatBytes(bytes: number, decimals = 2) {
     if (bytes === 0) {
       return '0 Bytes';
     }
