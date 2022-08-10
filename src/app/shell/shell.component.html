@@ -9,7 +9,7 @@
       <span class="logo" routerLink="/server"></span>
       <span class="flex flex-1 text-2xl">Production Support Dashboard v0.0.01</span>
       <div *ngIf="!(isHandset$ | async)">
-        <button class="text-1xl" mat-button (click)="logout()">🔑 Login</button>
+        <button class="text-2xl" mat-button (click)="logout()">🔑 Login</button>
       </div>
     </mat-toolbar>
   </header>
@@ -19,6 +19,7 @@
     </main>
     <nav class="sticky order-first m-1 bg-gray-600 top z-49 flex-iitial">
       <app-sidenav></app-sidenav>
+      <!-- <app-static-sidebar></app-static-sidebar> -->
     </nav>
   </div>
   <app-footer class="m-1 border"></app-footer>

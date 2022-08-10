@@ -10,6 +10,7 @@ import { SharedModule } from './shell/shared-module/shared.module';
 import { IconsModule } from './icons.module';
 import { ScrollService } from './services/scroll.service';
 import { GraphQLModule } from './graphql.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,10 +24,11 @@ import { GraphQLModule } from './graphql.module';
     CommonModule,
     IconsModule,
     SharedModule,
-    GraphQLModule
+    GraphQLModule,
+
   ],
   providers: [
-    NavService, ScrollService
+    NavService, ScrollService,
   ],
   bootstrap: [AppComponent]
 })

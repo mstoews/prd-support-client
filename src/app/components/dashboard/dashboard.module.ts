@@ -10,6 +10,7 @@ import { DashboardRoutingModule } from './dashboard.routing.module';
 import { SharedModule } from '../../shell/shared-module/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertsComponent } from '../alerts/alerts.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AlertsComponent } from '../alerts/alerts.component';
     ServiceRequestsComponent,
     IncidentsComponent,
     MonitoringComponent,
+    LandingPageComponent,
   ],
   imports: [
     CommonModule,

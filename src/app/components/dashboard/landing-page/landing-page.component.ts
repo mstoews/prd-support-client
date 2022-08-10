@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { Observable} from 'rxjs';
 import { ScrollService } from 'app/services/scroll.service';
 
@@ -15,7 +14,6 @@ export class LandingPageComponent implements OnInit {
 
   constructor(
     private matDialog: MatDialog,
-    private firestore: Firestore,
     private scrollTo: ScrollService) {}
 
   ngOnInit(): void {}
@@ -64,11 +62,11 @@ export class LandingPageComponent implements OnInit {
     //this.auth.signOut();
   }
 
-  getData() {
-     const ref = doc(this.firestore, 'test/1');
-     this.testDocValue$ = docData(ref).pipe(
-       traceUntilFirst('firestore')
-     );
-  }
+  // getData() {
+  //    const ref = doc(this.firestore, 'test/1');
+  //    this.testDocValue$ = docData(ref).pipe(
+  //      traceUntilFirst('firestore')
+  //    );
+  // }
 
 }

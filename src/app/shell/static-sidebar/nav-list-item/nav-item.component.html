@@ -1,7 +1,6 @@
-<li class="side-nav__item">
-  <a mat-list-item [ngStyle]="{'padding-left': (depth * 15) + 'px'}" (click)="onItemSelected(item)"
-    [ngClass]="{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}">
-    <mat-icon class="side-nav__icon" [svgIcon]=item.iconName> </mat-icon>
+<li>
+  <a mat-list-item class="flex items-center p-2 pr-5 font-normal text-gray-300 rounded-lg text-1xl grow hover:bg-gray-800 dark:hover:bg-gray-700" (click)="onItemSelected(item)">
+    <mat-icon [svgIcon]=item.iconName> </mat-icon>
     <span class="fill-space">{{item.displayName}}</span>
     <div *ngIf="item.parent == true" >
       <div class="menu-button" [ngStyle]="{'color': '#797575'}" [ngClass]="{'clicked': isClicked}" >
