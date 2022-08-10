@@ -37,7 +37,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   console.log('createApollo');
   let uri = localStorage.getItem('uri');
   if (uri === null) {
-    uri = 'http://localhost:3015/graphql';
+    uri = 'http://localhost:3020/graphql';
   }
   return {
     link: httpLink.create({ uri }),

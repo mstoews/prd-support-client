@@ -1,7 +1,7 @@
 import { Component, Inject, Optional } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { PartyService } from 'app/services/party.service';
+// import { PartyService } from 'app/services/dashboard.service';
 
 export interface IPartyRef {
   party_ref: string;
@@ -69,16 +69,16 @@ export interface IPartyRef {
 export class KanbanCloneComponent {
   formGroup: UntypedFormGroup;
   clients: string[] = ['CORE'];
-  parties: IPartyRef[];
+  // parties: IPartyRef[];
 
   constructor(
     private fb: UntypedFormBuilder,
-    private partyService: PartyService,
+    // private partyService: PartyService,
     public dialogRef: MatDialogRef<KanbanCloneComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     if (localStorage.getItem('CLIENT') !== 'CORE') {
-      this.clients.push(localStorage.getItem('CLIENT'));
+      // this.clients.push(localStorage.getItem('CLIENT'));
     }
     this.createForm();
   }

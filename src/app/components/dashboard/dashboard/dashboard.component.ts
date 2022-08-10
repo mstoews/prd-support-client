@@ -1,7 +1,4 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IconsModule } from 'app/icons.module';
-import { MaterialModule } from 'app/MaterialModule';
 import { ApexNonAxisChartSeries, NgApexchartsModule } from 'ng-apexcharts';
 
 import {

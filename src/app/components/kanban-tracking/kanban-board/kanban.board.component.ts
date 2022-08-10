@@ -15,7 +15,7 @@ import { KanbanService } from '../module/kanban.service';
 import { Subscription } from 'rxjs';
 import { ITask, IBoard } from '../module/tasks.model';
 import { MatDialog } from '@angular/material/dialog';
-import { PartyService } from '../../../services/party.service';
+// import { PartyService } from '../../../services/dashboard.service';
 import { Router } from '@angular/router';
 import { KanbanRefService } from '../module/kanban-party-ref.service';
 import { MatDrawer, MatSidenav } from '@angular/material/sidenav';
@@ -69,7 +69,7 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
 
   constructor(
     public dialog: MatDialog,
-    public partyService: PartyService,
+    // public partyService: PartyService,
     private fb: UntypedFormBuilder,
     public kanbanService: KanbanService,
     public kanbanRefService: KanbanRefService,

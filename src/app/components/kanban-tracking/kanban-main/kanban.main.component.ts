@@ -14,8 +14,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { throwError, Observable } from 'rxjs';
 import { KanbanService } from '../module/kanban.service';
 import { MatDrawer } from '@angular/material/sidenav';
-
-import { PartyService } from 'app/services/party.service';
 import { KanbanRefService } from '../module/kanban-party-ref.service';
 import { IMenuState } from '../module/tasks.model';
 import { KanbanBoardComponent } from '../kanban-board/kanban.board.component';
@@ -33,23 +31,24 @@ interface IValue {
 })
 export class KanbanMainComponent implements OnInit {
   constructor(
-    public partyService: PartyService,
     public kanbanService: KanbanService,
     public kanbanRefService: KanbanRefService,
     public dialog: MatDialog
   ) {}
-  @ViewChild('matDrawer', { static: true }) matDrawer: MatDrawer;
-  drawerMode: 'side' | 'over';
-  outTitle = 'COMP';
-  outPartyRef: string;
-  partyRef: string;
-  clientRef: string;
-  currentSelection: string;
-  menuState: IMenuState;
-
-  public partyReference$: Observable<any>;
-  @ViewChild(KanbanGroupComponent) public kanbanGroupComponent: KanbanGroupComponent;
   
+  @ViewChild('matDrawer', { static: false }) public drawer!: MatDrawer;
+  drawerMode: 'side' | 'over' = "side";
+  outTitle = 'COMP';
+  outPartyRef!: string;
+  partyRef!: string;
+  clientRef!: string;
+  currentSelection!: string;
+  menuState!: IMenuState;
+
+  public partyReference$!: Observable<any>;
+  @ViewChild(KanbanGroupComponent)
+  public kanbanGroupComponent!: KanbanGroupComponent;
+
 
   @Output() notifyParentMenu: EventEmitter<any> = new EventEmitter();
 
@@ -78,18 +77,18 @@ export class KanbanMainComponent implements OnInit {
     return errorMessage;
   }
 
-  onRefreshPartyRef(event) {
+  onRefreshPartyRef(event: any) {
     //  console.log ('onRefreshPartRef :', event);
     this.notifyParentMenu.emit(event);
   }
 
   ngOnInit() {
-    this.partyReference$ = this.partyService.getPartyByType(this.outTitle);
+    // this.partyReference$ = this.partyService.getPartyByType(this.outTitle);
 
     this.partyReference$.subscribe({
       next: (val) => {
         let count = 1;
-        val.forEach((element) => {
+        val.forEach((element: any) => {
           const item: IValue = {
             value: count.toString(),
             menuDesc: element.party_long_name,
@@ -101,21 +100,21 @@ export class KanbanMainComponent implements OnInit {
       },
       error: (err) => console.log(err.message),
     });
-    this.partyService.getFirstPartyByType(this.outTitle).subscribe({
-      next: (val) => {
-        this.partyRef = val.party_ref;
-        const menuState = {
-          partyRef: val.party_ref,
-          partyClient: localStorage.getItem('CLIENT'),
-          partyType: val.party_type,
-        };
-        this.kanbanRefService.setMenuState(menuState);
-      },
-      error: (err) => console.log(err.message),
-    });
+    // this.partyService.getFirstPartyByType(this.outTitle).subscribe({
+    //   next: (val: any) => {
+    //     this.partyRef = val.party_ref;
+    //     const menuState = {
+    //       partyRef: val.party_ref,
+    //       partyClient: localStorage.getItem('CLIENT'),
+    //       partyType: val.party_type,
+    //     };
+    //     this.kanbanRefService.setMenuState(menuState);
+    //   },
+    //   error: (err: any) => console.log(err.message),
+    // });
   }
 
-  onMenuItemChanged(partyRef) {
+  onMenuItemChanged(partyRef: string) {
     this.kanbanRefService.setPartyRef(partyRef);
   }
 
@@ -124,12 +123,12 @@ export class KanbanMainComponent implements OnInit {
 
   }
 
-  
+
   OnDestroy() {
     // this.kanbanService.
   }
 
-  onRowDblClick(e) {
+  onRowDblClick(e: any) {
     //  console.log (`On row double click ${e.data}`);
   }
 }

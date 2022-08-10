@@ -2,8 +2,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
-import * as glossApi from '../../../services/api.service';
-import { PartyService } from '../../../services/party.service';
+import * as glossApi from 'app/services/graphql.api';
 import { StatusType } from '../lists/status-list/status.types';
 import { ITask } from './tasks.model';
 
@@ -31,11 +30,10 @@ export class KanbanService {
     private readonly firstKanbanTask: glossApi.KanbanFirstTaskGQL,
     private readonly kanbanTaskByTaskId: glossApi.KanbanTaskByTaskIdGQL,
     private readonly updateTaskParentId: glossApi.UpdateTaskParentIdGQL,
-    private readonly partyByTypeGQL: glossApi.PartyByTypeGQL,
-    private readonly kanbanAssigneeGQL: glossApi.KanbanAssigneeGQL,
     private readonly kanbanStatusByIdGQL: glossApi.KanbanStatusByIdGQL,
-    private readonly partyService: PartyService,
     private readonly usersGQL: glossApi.UsersGQL,
+    
+  ) { }
 
   ) {}
 

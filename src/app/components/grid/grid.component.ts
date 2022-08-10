@@ -10,45 +10,11 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MenuBarService } from 'app/services/menu.bar.service';
-import { PartyService } from 'app/services/party.service';
-import { CheckboxRenderer } from './checkbox-renderer.component';
-import { DndComponent } from './loadxmldnd/dnd.component';
-import { DndJSONComponent } from './loadjsondnd/dnd.json.component';
+// import { PartyService } from 'app/services/dashboard.service';
 
 @Component({
   selector: 'grid',
   template: `
-    <div *ngIf="showBar === true">
-      <mat-toolbar>
-        <span class="fill-space">
-          <button
-            mat-flat-button
-            (click)="onBtnExport()"
-            matTooltip="Download JSON"
-          >
-            <mat-icon [svgIcon]="'mat_outline:download'"> </mat-icon>
-            Download JSON
-          </button>
-          <button
-            mat-flat-button
-            (click)="onBtnImportJsonFile()"
-            matTooltip="Upload JSON"
-          >
-            <mat-icon [svgIcon]="'mat_outline:upload'"></mat-icon>
-            Upload JSON
-          </button>
-          <button
-            mat-flat-button
-            (click)="onBtnImport()"
-            matTooltip="Upload XML Party"
-          >
-            <mat-icon [svgIcon]="'heroicons_outline:external-link'"> </mat-icon>
-            Drag and Drop XML
-          </button>
-        </span>
-        <!-- <span><input type="file" (change)="onFileSelect($event)" /> </span> -->
-      </mat-toolbar>
-    </div>
     <ag-grid-angular
       class="grid-card"
       style="width: 100%;"
@@ -66,22 +32,19 @@ import { DndJSONComponent } from './loadjsondnd/dnd.json.component';
       (cellEditingStopped)="onCellEditingStopped($event)"
       [modules]="modules"
       (cellValueChanged)="onCellValueChanged($event)"
-      [frameworkComponents]="frameworkComponents"
       (gridReady)="onGridReady($event)"
       [paginationPageSize]="paginationPageSize"
       [pagination]="true">
     </ag-grid-angular>
-    <mat-progress-spinner mode="determinate" [value]="progress">
-    </mat-progress-spinner>
   `,
   styleUrls: ['./grid.component.scss'],
 })
 export class GridAGComponent implements OnInit {
-  frameworkComponents;
+
   progress = 0;
   timer!: number;
   constructor(
-    private partyService: PartyService,
+    // private partyService: PartyService,
     private matDialog: MatDialog,
     private menuBarShowUploadService: MenuBarService
   ) {
@@ -92,7 +55,7 @@ export class GridAGComponent implements OnInit {
         this.showBar = true;
       }
     });
-    this.frameworkComponents = { checkboxRenderer: CheckboxRenderer };
+
   }
   @ViewChild('agGrid')
   agGrid!: AgGridAngular;
@@ -155,7 +118,7 @@ export class GridAGComponent implements OnInit {
 
   onSelectionChanged(event: any) {
     const data = event.node.data;
-    this.partyService.setParty(data);
+    // this.partyService.setParty(data);
     // this.onSelectedPartyRef.emit(data);
   }
 
@@ -177,7 +140,7 @@ export class GridAGComponent implements OnInit {
 
   onRefreshGrid() {}
 
-  onGridReady(params) {
+  onGridReady(params: { api: { sizeColumnsToFit: any; getSelectedRows?: any; }; columnApi: any; }) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     params.api.sizeColumnsToFit();
@@ -200,14 +163,6 @@ export class GridAGComponent implements OnInit {
     anchor.click();
   }
 
-  onBtnImport() {
-    this.openXMLDialog();
-  }
-
-  onBtnImportJsonFile() {
-    this.openJSONDialog();
-  }
-
   onFileSelect(event: { target: { files: File[]; }; }) {
     const selectedFile: File = event.target.files[0];
     const fileReader: FileReader = new FileReader();
@@ -215,45 +170,6 @@ export class GridAGComponent implements OnInit {
       this.notifyFileUpload.emit(fileReader.result);
     };
     fileReader.readAsText(selectedFile);
-  }
-
-  openXMLDialog() {
-    const dialogRef = this.matDialog.open(DndComponent, {
-      width: '500px',
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      //  console.log ('Just before update', result.data);
-      if (result === undefined) {
-        result = { event: 'Cancel' };
-      }
-      switch (result.event) {
-        case 'Create':
-          this.create(result.data);
-          break;
-        case 'Cancel':
-          break;
-      }
-    });
-  }
-
-  openJSONDialog() {
-    const dialogRef = this.matDialog.open(DndJSONComponent, {
-      width: '500px',
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result === undefined) {
-        result = { event: 'Cancel' };
-      }
-      switch (result.event) {
-        case 'Create':
-          this.loadjson(result.data);
-          break;
-        case 'Cancel':
-          break;
-      }
-    });
   }
 
   loadjson(data: any) {

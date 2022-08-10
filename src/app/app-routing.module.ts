@@ -7,13 +7,13 @@ const routes: Route[] = [
     loadChildren: () => import('./components/blog/routes').then((mod) => mod.BLOG_ROUTES),
     },
   {
-    path: 'landing',
-    loadChildren: () =>
-      import('app/shell/shared-module/shared.module').then((m) => m.SharedModule),
+    path: 'dashboard',
+    pathMatch: 'full',
+    loadChildren: () => import('./components/dashboard/dashboard.module').then((mod) => mod.DashboardModule),
   },
   {
     path: '',
-    redirectTo: '/landing/dashboard',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   },
 ];

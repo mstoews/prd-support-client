@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { KanbanService } from '../module/kanban.service';
 import { Party } from 'app/services/api.service';
-import { PartyService } from '../../../services/party.service';
+import { PartyService } from '../../../services/dashboard.service';
 import { KanbanRefService } from '../module/kanban-party-ref.service';
 
 interface IValue {

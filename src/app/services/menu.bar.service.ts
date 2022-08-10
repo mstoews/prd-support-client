@@ -1,11 +1,10 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MenuBarService {
-  showBar: boolean;
+  showBar: boolean = false;
   public uploadMenuState = new EventEmitter<any>();
   setBar() {
     if (this.showBar === undefined || this.showBar === true) {

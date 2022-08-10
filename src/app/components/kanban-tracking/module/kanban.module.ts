@@ -16,8 +16,6 @@ import { KanbanCommonModule } from './kanban.common.module';
 import { KanbanRefService } from './kanban-party-ref.service';
 import { GridAGModule } from '../../grid/gridAG.module';
 import { DnDTreeComponent } from '../lists/tree-list/dndTree';
-import { TreeModule } from '@circlon/angular-tree-component';
-import { AgChartsAngularModule } from 'ag-charts-angular';
 import { SidenavService } from '../sidenav.service';
 import { PriorityFormComponent } from '../lists/priority-list/priority.form';
 import { TypeFormComponent } from '../lists/type-list/types.form';
@@ -74,10 +72,8 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         KanbanCommonModule,
         GridAGModule,
-        TreeModule,
-        AgChartsAngularModule,
     ],
     exports: [KanbanCommonModule],
-    providers: [KanbanService, KanbanRefService, SidenavService, { provide: MatDialogRef,  useValue: {} }]
+    providers: [ KanbanRefService, SidenavService, { provide: MatDialogRef,  useValue: {} }]
 })
 export class KanbanTasksModule {}

@@ -8,7 +8,7 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatTabGroup } from '@angular/material/tabs';
 import { KanbanService } from '../module/kanban.service';
 import { KanbanBoardComponent } from '../kanban-board/kanban.board.component';
-import { PartyService } from 'app/services/party.service';
+
 import { KanbanRefService } from '../module/kanban-party-ref.service';
 import { TasksListComponent } from '../lists/tasks-list/tasks-list.component';
 
@@ -16,34 +16,35 @@ import { TasksListComponent } from '../lists/tasks-list/tasks-list.component';
   selector: 'app-kanban-group',
   templateUrl: './kanban.group.component.html',
   styleUrls: ['./kanban.group.component.scss'],
-  providers: [KanbanService],
 })
 export class KanbanGroupComponent {
   constructor(
     public formBuilder: UntypedFormBuilder,
-    public partyService: PartyService,
+
     public kanbanService: KanbanService,
     kanbanRefService: KanbanRefService
   ) {
     // const client = localStorage.getItem('CLIENT');
-    
     kanbanRefService.kanbanRefUpdated.subscribe((ref) => {
-      this.partyRef = ref.partyRef;
-      this.clientRef = ref.clientRef;
     });
+
+    this.tabGroup.selectedIndex = 0;
   }
-  
+
   @Output() public FormPartyRefChanged: EventEmitter<any> = new EventEmitter();
-  @ViewChild('tabGroup', { static: true }) tabGroup: MatTabGroup;
-  public partyRef: string;
 
-  formGroup: UntypedFormGroup;
+  @ViewChild('tabGroup', { static: true })
+  public tabGroup!: MatTabGroup;
+
+  formGroup!: UntypedFormGroup;
   currentTab = 0;
-  clientRef: string;
-  currectSelection: string;
+  clientRef!: string;
+  currectSelection!: string;
 
-  @ViewChild(KanbanBoardComponent) public kanbanBoardComponent: KanbanBoardComponent;
-  @ViewChild(TasksListComponent) public tasksListComponent: TasksListComponent;
+  @ViewChild(KanbanBoardComponent)
+  public kanbanBoardComponent!: KanbanBoardComponent;
+  @ViewChild(TasksListComponent)
+  public tasksListComponent!: TasksListComponent;
 
 
   public onAdd(){
@@ -53,15 +54,16 @@ export class KanbanGroupComponent {
   }
 
   public updateKanbanTasks() {
+    if (this.tabGroup.selectedIndex !== null) {
     const tabLabel =
       this.tabGroup._tabs.toArray()[this.tabGroup.selectedIndex].textLabel;
     switch (tabLabel) {
       case 'Kanban': {
-        this.kanbanBoardComponent.refreshData(this.partyRef);
+
         break;
       }
       case 'Board Tasks': {
-        this.tasksListComponent.refreshDataByRef(this.partyRef);
+
         break;
       }
       case 'Dependency': {
@@ -72,20 +74,22 @@ export class KanbanGroupComponent {
       }
       default:
         break;
+      }
     }
   }
 
   onTabClick() {
+   if ( this.tabGroup.selectedIndex  !== null) {
     const tabLabel =
       this.tabGroup._tabs.toArray()[this.tabGroup.selectedIndex].textLabel;
     {
       switch (tabLabel) {
         case 'Kanban': {
-          this.kanbanBoardComponent.refreshData(this.partyRef);
+          //this.kanbanBoardComponent.refreshData(this.partyRef);
           break;
         }
         case 'Board Tasks': {
-          this.tasksListComponent.refreshDataByRef(this.partyRef);
+          //this.tasksListComponent.refreshDataByRef(this.partyRef);
           break;
         }
         case 'Dependency': {
@@ -98,6 +102,7 @@ export class KanbanGroupComponent {
           break;
       }
     }
+  }
   }
 
   onClickAdd(event: { index: any; tab?: string }) {

@@ -31,14 +31,9 @@ import { ShellComponent } from '../shell.component';
 import { MenubarComponent } from 'app/components/menubar/menubar.component';
 import { NavItemComponent } from '../static-sidebar/nav-list-item/nav-item.component';
 import { StaticSidebarComponent } from '../static-sidebar/static-sidebar.component';
-import { LandingPageComponent } from 'app/components/landing-page/landing-page.component';
-import { FeatureComponent } from '../../components/feature/feature.component';
-import { SharedRoutingModule } from './shared-routing.module';
-import { AlertsComponent } from '../../components/alerts/alerts.component';
 
 const components = [
   ShellComponent,
-  LandingPageComponent,
   StaticSidebarComponent,
   MenubarComponent,
   NavItemComponent,
@@ -75,9 +70,7 @@ const modules = [
   MatTooltipModule,
   MatProgressSpinnerModule,
   MatAutocompleteModule,
-  SharedRoutingModule,
-  FeatureComponent,
-  AlertsComponent,
+
 ];
 
 
