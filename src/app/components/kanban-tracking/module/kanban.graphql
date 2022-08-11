@@ -130,3 +130,17 @@ mutation updateTaskParentId($task_id: String!, $parentId: Int!) {
     parentId
   }
 }
+
+query User {
+  users {
+    userid
+    firstname
+    lastname
+    createdAt
+    updatedAt
+    email
+    role
+  }
+}
+
+

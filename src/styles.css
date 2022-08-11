@@ -50,14 +50,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 }
 
 #hero {
-  background-image: url('assets/image.jpg');
+  background-image: url('assets/img/tokyo-night-3.jpg');
+  /* background-image: url('assets/img/rainbow-bridge-1.jpg'); */
+  /* background-image: url('assets/img/rainbow.jpg'); */
+  /* background-image: url('assets/image.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 @media (max-width: 576px) {
   #hero {
-    background-image: url('assets/image.jpg');
+    background-image: url('assets/img/tokyo-3.jpg');
     background-position: center;
   }
 }

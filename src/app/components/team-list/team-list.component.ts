@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { KanbanService } from '../../module/kanban.service';
-import { IAssignee } from '../../module/tasks.model';
+import { KanbanService } from 'app/components/kanban-tracking/module/kanban.service';
+import { IAssignee } from 'app/components/kanban-tracking/module/tasks.model';
+import { SharedModule } from '../kanban-tracking/module/shared.module';
+import { IconsModule } from 'app/icons.module';
+import { GridAGModule } from '../grid/gridAG.module';
+import { ProgressComponent } from '../progress/progress.component';
+import { CommonModule } from '@angular/common';
 
 export interface ITeam {
   userid: string;
@@ -13,6 +18,8 @@ export interface ITeam {
 }
 
 @Component({
+  standalone: true,
+  imports: [GridAGModule, SharedModule, ProgressComponent, IconsModule, CommonModule],
   selector: 'team-list',
   template: `
     <ng-container *ngIf="team$ | async as team">

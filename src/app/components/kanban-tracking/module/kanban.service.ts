@@ -31,11 +31,10 @@ export class KanbanService {
     private readonly kanbanTaskByTaskId: glossApi.KanbanTaskByTaskIdGQL,
     private readonly updateTaskParentId: glossApi.UpdateTaskParentIdGQL,
     private readonly kanbanStatusByIdGQL: glossApi.KanbanStatusByIdGQL,
-    private readonly usersGQL: glossApi.UsersGQL,
-    
+    private readonly userGQL: glossApi.UserGQL,
+
   ) { }
 
-  ) {}
 
   // tslint:disable-next-line:variable-name
 
@@ -43,43 +42,23 @@ export class KanbanService {
 
   public taskUpdated = new EventEmitter<ITask>();
 
-  public users () {
-    return this.usersGQL.watch().valueChanges.pipe(map((result) => result.data.users));
-  }
 
   public setTask(task: ITask) {
     this.currentTask = task;
     this.taskUpdated.emit(this.currentTask);
   }
 
-  public getPartyByRefAndClient(partyType: string, clientRef: string) {
-    return this.partyByTypeGQL
-      .watch({ party_type: partyType, client_ref: clientRef })
-      .valueChanges.pipe(map((result) => result.data.partyByType));
-  }
-
-  public getFirstPartyRef(partyType: string ): string {
-    let partyRef = '';
-    const party$ = this.partyService.getFirstPartyByType(partyType);
-    party$.subscribe((data: any) => {
-      console.log ('OnFirstPartyType:', data.party_ref);
-      partyRef = data.party_ref;
-    });
-    return partyRef;
-  }
-
-
   /// Assignee
-  public getKanbanTeam() {
-    return this.kanbanAssigneeGQL
-      .watch()
-      .valueChanges.pipe(map((result) => result.data.KanbanAssignee));
-  }
 
   public getFirstKanbanTaskRef() {
     return this.firstKanbanTask
       .watch()
       .valueChanges.pipe(map((result) => result.data.KanbanFirstTask));
+  }
+
+
+  public getUserList() {
+    return this.userGQL.watch().valueChanges.pipe(map((result) => result.data.users));
   }
 
   public getTaskbyTaskId(taskId: string) {
@@ -106,19 +85,7 @@ export class KanbanService {
       .watch()
       .valueChanges.pipe(map((result) => result.data.KanbanStatus));
   }
-  private _status: BehaviorSubject<StatusType | null> = new BehaviorSubject(null);
-  private _statuses: BehaviorSubject<StatusType[] | null> = new BehaviorSubject(null);
 
-  get status$(): Observable<StatusType>
-    {
-        return this._status.asObservable();
-    }
-
-
-  get statuses$(): Observable<StatusType[]>
-  {
-        return this._statuses.asObservable();
-  }
 
    public getStatutes(): Observable<StatusType[]>
    {

@@ -748,6 +748,11 @@ export type UpdateTaskParentIdMutationVariables = Exact<{
 
 export type UpdateTaskParentIdMutation = { __typename?: 'Mutation', updateTaskParentId: { __typename?: 'kb_task', task_id: string, parentId?: number | null } };
 
+export type UserQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type UserQuery = { __typename?: 'Query', users: Array<{ __typename?: 'User', userid: string, firstname?: string | null, lastname?: string | null, createdAt: any, updatedAt: any, email: string, role: string }> };
+
 export const KanbanTaskFragmentDoc = gql`
     fragment KanbanTask on kb_task {
   party_ref
@@ -1068,6 +1073,30 @@ export const UpdateTaskParentIdDocument = gql`
   })
   export class UpdateTaskParentIdGQL extends Apollo.Mutation<UpdateTaskParentIdMutation, UpdateTaskParentIdMutationVariables> {
     document = UpdateTaskParentIdDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const UserDocument = gql`
+    query User {
+  users {
+    userid
+    firstname
+    lastname
+    createdAt
+    updatedAt
+    email
+    role
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class UserGQL extends Apollo.Query<UserQuery, UserQueryVariables> {
+    document = UserDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
