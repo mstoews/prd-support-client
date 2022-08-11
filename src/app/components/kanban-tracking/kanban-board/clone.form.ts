@@ -1,7 +1,7 @@
 import { Component, Inject, Optional } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-// import { PartyService } from 'app/services/dashboard.service';
+import { KanbanService } from '../module/kanban.service';
 
 export interface IPartyRef {
   party_ref: string;
@@ -67,7 +67,7 @@ export interface IPartyRef {
   `,
 })
 export class KanbanCloneComponent {
-  formGroup: UntypedFormGroup;
+  formGroup!: UntypedFormGroup;
   clients: string[] = ['CORE'];
   // parties: IPartyRef[];
 
@@ -103,12 +103,12 @@ export class KanbanCloneComponent {
     this.dialogRef.close({ event: 'Cancel' });
   }
 
-  clientUpdated(event) {
+  clientUpdated(event: any) {
     const sComp = localStorage.getItem('CLIENT');
-    this.partyService
-      .getPartyByTypeAndClient(sComp, event.value)
-      .subscribe((value) => {
-        this.formGroup.patchValue((this.parties = value));
-      });
+    // this.partyService
+    //   .getPartyByTypeAndClient(sComp, event.value)
+    //   .subscribe((value) => {
+    //     this.formGroup.patchValue((this.parties = value));
+    //   });
   }
 }

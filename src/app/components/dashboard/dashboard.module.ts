@@ -7,10 +7,12 @@ import { IncidentsComponent } from './incidents/incidents.component';
 import { MonitoringComponent } from './monitoring/monitoring.component';
 import { GridAGModule } from '../grid/gridAG.module';
 import { DashboardRoutingModule } from './dashboard.routing.module';
-import { SharedModule } from '../../shell/shared-module/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertsComponent } from '../alerts/alerts.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { TeamComponent } from './team-list/team-list.component';
+import { MaterialModule } from '../../MaterialModule';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     IncidentsComponent,
     MonitoringComponent,
     LandingPageComponent,
+    TeamComponent,
   ],
   imports: [
     CommonModule,
@@ -26,9 +29,10 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     ReactiveFormsModule,
     GridAGModule,
     DashboardRoutingModule,
-    SharedModule,
+    MaterialModule,
     NgApexchartsModule,
     AlertsComponent,
-  ]
+
+  ],
 })
 export class DashboardModule { }

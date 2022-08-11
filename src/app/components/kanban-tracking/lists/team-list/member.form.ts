@@ -63,7 +63,7 @@ import { IStatus } from '../interface.types';
   `,
 })
 export class TeamMemberFormComponent {
-  formGroup: UntypedFormGroup;
+  formGroup!: UntypedFormGroup;
 
   constructor(
     public dialogRef: MatDialogRef<TeamMemberFormComponent>,

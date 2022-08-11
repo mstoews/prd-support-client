@@ -125,7 +125,7 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
     );
 
     this.subTeam = this.kanbanService
-    .users()
+    .getUserList()
     .subscribe((teamMember) => (this.team = teamMember));
     this.createEmptyForm();
   }

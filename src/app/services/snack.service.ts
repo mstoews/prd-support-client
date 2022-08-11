@@ -14,19 +14,30 @@ export class SnackService {
       duration: 3000,
     });
 
-    return this.snackBar._openedSnackBarRef.onAction().subscribe();
+    const rc = this.snackBar._openedSnackBarRef
+
+    if ( rc != null ) {
+        return rc.onAction().subscribe();
+    }
+    else {
+        return null;
+    }
+
   }
 
   authError() {
     this.snackBar.open('You must be logged in!', 'OK', {
       duration: 3000,
     });
-
-    return this.snackBar._openedSnackBarRef
-      .onAction()
-      .pipe(tap((_) => this.router.navigate(['/user/login'])))
-      .subscribe();
+    const rc = this.snackBar._openedSnackBarRef
+    if ( rc != null ) {
+      return rc.onAction().pipe(tap((_) => this.router.navigate(['/user/login']))).subscribe();
+    }
+    else {
+      return null;
+    }
   }
+
 
   showMessage(message: string) {
     this.snackBar.open(message, '', {

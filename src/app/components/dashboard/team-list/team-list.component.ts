@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { KanbanService } from '../../module/kanban.service';
-import { IAssignee } from '../../module/tasks.model';
+import { PrdService } from 'app/services/prd.service';
 
 export interface ITeam {
   userid: string;
@@ -25,13 +24,13 @@ export interface ITeam {
     </ng-container>
   `,
 })
-export class TeamListComponent {
-  // team$: Observable<any[]>;
+export class TeamComponent {
+  team$: Observable<any[]>;
   cols: any;
 
-  constructor(private kanbanService: KanbanService) {
-
-    this.cols = this.kanbanService.getTeamCols();
+  constructor(private prodService: PrdService) {
+    this.team$ = this.prodService.getUserList();
+    this.cols = this.prodService.getTeamCols();
   }
   onNotify(event: any) {
     console.log(event);

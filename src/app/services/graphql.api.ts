@@ -789,8 +789,8 @@ export const KanbanTasksDocument = gql`
     providedIn: 'root'
   })
   export class KanbanTasksGQL extends Apollo.Query<KanbanTasksQuery, KanbanTasksQueryVariables> {
-    document = KanbanTasksDocument;
-    
+    override document = KanbanTasksDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -810,8 +810,8 @@ export const KanbanPriorityDocument = gql`
     providedIn: 'root'
   })
   export class KanbanPriorityGQL extends Apollo.Query<KanbanPriorityQuery, KanbanPriorityQueryVariables> {
-    document = KanbanPriorityDocument;
-    
+    override document = KanbanPriorityDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -831,8 +831,8 @@ export const KanbanTypeDocument = gql`
     providedIn: 'root'
   })
   export class KanbanTypeGQL extends Apollo.Query<KanbanTypeQuery, KanbanTypeQueryVariables> {
-    document = KanbanTypeDocument;
-    
+    override document = KanbanTypeDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -852,8 +852,8 @@ export const KanbanStatusDocument = gql`
     providedIn: 'root'
   })
   export class KanbanStatusGQL extends Apollo.Query<KanbanStatusQuery, KanbanStatusQueryVariables> {
-    document = KanbanStatusDocument;
-    
+    override document = KanbanStatusDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -873,8 +873,8 @@ export const KanbanStatusByIdDocument = gql`
     providedIn: 'root'
   })
   export class KanbanStatusByIdGQL extends Apollo.Query<KanbanStatusByIdQuery, KanbanStatusByIdQueryVariables> {
-    document = KanbanStatusByIdDocument;
-    
+    override document = KanbanStatusByIdDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -891,8 +891,8 @@ export const KanbanTaskByTaskIdDocument = gql`
     providedIn: 'root'
   })
   export class KanbanTaskByTaskIdGQL extends Apollo.Query<KanbanTaskByTaskIdQuery, KanbanTaskByTaskIdQueryVariables> {
-    document = KanbanTaskByTaskIdDocument;
-    
+    override document = KanbanTaskByTaskIdDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -909,8 +909,8 @@ export const KanbanTaskByStatusDocument = gql`
     providedIn: 'root'
   })
   export class KanbanTaskByStatusGQL extends Apollo.Query<KanbanTaskByStatusQuery, KanbanTaskByStatusQueryVariables> {
-    document = KanbanTaskByStatusDocument;
-    
+    override document = KanbanTaskByStatusDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -927,8 +927,8 @@ export const KanbanByTaskIdDocument = gql`
     providedIn: 'root'
   })
   export class KanbanByTaskIdGQL extends Apollo.Query<KanbanByTaskIdQuery, KanbanByTaskIdQueryVariables> {
-    document = KanbanByTaskIdDocument;
-    
+    override document = KanbanByTaskIdDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -945,8 +945,8 @@ export const KanbanTaskByRefAndStatusDocument = gql`
     providedIn: 'root'
   })
   export class KanbanTaskByRefAndStatusGQL extends Apollo.Query<KanbanTaskByRefAndStatusQuery, KanbanTaskByRefAndStatusQueryVariables> {
-    document = KanbanTaskByRefAndStatusDocument;
-    
+    override document = KanbanTaskByRefAndStatusDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -963,8 +963,8 @@ export const KanbanTaskByRefDocument = gql`
     providedIn: 'root'
   })
   export class KanbanTaskByRefGQL extends Apollo.Query<KanbanTaskByRefQuery, KanbanTaskByRefQueryVariables> {
-    document = KanbanTaskByRefDocument;
-    
+    override document = KanbanTaskByRefDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -981,8 +981,8 @@ export const KanbanByStatusDocument = gql`
     providedIn: 'root'
   })
   export class KanbanByStatusGQL extends Apollo.Query<KanbanByStatusQuery, KanbanByStatusQueryVariables> {
-    document = KanbanByStatusDocument;
-    
+    override document = KanbanByStatusDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -999,8 +999,8 @@ export const CreateKanbanTaskDocument = gql`
     providedIn: 'root'
   })
   export class CreateKanbanTaskGQL extends Apollo.Mutation<CreateKanbanTaskMutation, CreateKanbanTaskMutationVariables> {
-    document = CreateKanbanTaskDocument;
-    
+    override document = CreateKanbanTaskDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -1017,8 +1017,8 @@ export const UpdateTaskDocument = gql`
     providedIn: 'root'
   })
   export class UpdateTaskGQL extends Apollo.Mutation<UpdateTaskMutation, UpdateTaskMutationVariables> {
-    document = UpdateTaskDocument;
-    
+    override document = UpdateTaskDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -1035,8 +1035,8 @@ export const DeleteTaskDocument = gql`
     providedIn: 'root'
   })
   export class DeleteTaskGQL extends Apollo.Mutation<DeleteTaskMutation, DeleteTaskMutationVariables> {
-    document = DeleteTaskDocument;
-    
+    override document = DeleteTaskDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -1053,8 +1053,8 @@ export const KanbanFirstTaskDocument = gql`
     providedIn: 'root'
   })
   export class KanbanFirstTaskGQL extends Apollo.Query<KanbanFirstTaskQuery, KanbanFirstTaskQueryVariables> {
-    document = KanbanFirstTaskDocument;
-    
+    override document = KanbanFirstTaskDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -1072,8 +1072,8 @@ export const UpdateTaskParentIdDocument = gql`
     providedIn: 'root'
   })
   export class UpdateTaskParentIdGQL extends Apollo.Mutation<UpdateTaskParentIdMutation, UpdateTaskParentIdMutationVariables> {
-    document = UpdateTaskParentIdDocument;
-    
+    override document = UpdateTaskParentIdDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }
@@ -1096,8 +1096,8 @@ export const UserDocument = gql`
     providedIn: 'root'
   })
   export class UserGQL extends Apollo.Query<UserQuery, UserQueryVariables> {
-    document = UserDocument;
-    
+    override document = UserDocument;
+
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
     }

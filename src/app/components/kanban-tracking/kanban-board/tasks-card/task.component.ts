@@ -46,7 +46,7 @@ export class TaskComponent implements OnInit {
     // this.kanbanService.setParty(partyRef);
   }
 
-  onAdd(data) {
+  onAdd(data: any) {
     console.log ('OnAdd from KanbanTasks');
     this.notifyOpenTaskDialog.emit(data);
   }

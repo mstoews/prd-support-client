@@ -11,6 +11,14 @@ const routes: Route[] = [
     redirectTo: 'dashboard',
     pathMatch: 'full',
   },
+  // {
+  //   path: 'kanban',
+  //   loadChildren: () =>
+  //     import('./components/kanban-tracking/module/kanban.module').then(
+  //       (m) => m.KanbanTasksModule
+  //     ),
+  //   // canActivate: [AuthGuard],
+  // },
 ];
 
 @NgModule({

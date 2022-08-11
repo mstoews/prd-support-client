@@ -17,7 +17,7 @@ import { StatusType } from './status.types';
   styleUrls: ['./status-list.component.scss'],
 })
 export class StatusListComponent {
-  @ViewChild('drawer') drawer: MatDrawer;
+  @ViewChild('drawer', { static: true }) public drawer!: MatDrawer;
   statuses!: Observable<StatusType[]>;
   @Output() private statusChange: EventEmitter<any> =
     new EventEmitter<StatusType>();
@@ -31,7 +31,7 @@ export class StatusListComponent {
 
   cols: any;
   showFiller = false;
-  formGroup: UntypedFormGroup;
+  formGroup!: UntypedFormGroup;
 
   constructor(
     private kanbanService: KanbanService,

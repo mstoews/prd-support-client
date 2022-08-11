@@ -19,7 +19,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import * as moment from 'moment';
 import { SharedModule } from 'app/components/kanban-tracking/module/shared.module';
-import { statusRoutes } from './status.routing';
 import { StatusListComponent } from './status-list.component';
 import { StatusDetailsComponent } from './status.details';
 
@@ -30,7 +29,6 @@ import { StatusDetailsComponent } from './status.details';
         StatusDetailsComponent,
     ],
     imports     : [
-        RouterModule.forChild(statusRoutes),
         DragDropModule,
         MatAutocompleteModule,
         MatButtonModule,

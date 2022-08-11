@@ -9,7 +9,9 @@ import { SharedModule } from './shell/shared-module/shared.module';
 import { IconsModule } from './icons.module';
 import { ScrollService } from './services/scroll.service';
 import { HttpClientModule } from '@angular/common/http';
-import { GraphqlModule } from './graphql.module';
+import { GraphQLModule } from './graphql.module';
+import { PrdService } from './services/prd.service';
+
 
 @NgModule({
   declarations: [
@@ -19,16 +21,14 @@ import { GraphqlModule } from './graphql.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
     CommonModule,
     IconsModule,
     SharedModule,
-    GraphqlModule,
+    GraphQLModule,
     HttpClientModule,
-
   ],
   providers: [
-    NavService, ScrollService,
+    NavService, ScrollService, PrdService
   ],
   bootstrap: [AppComponent]
 })

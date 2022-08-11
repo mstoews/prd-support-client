@@ -11,13 +11,13 @@ import { StatusType } from './status.types';
       <form [formGroup]="formGroup" #myForm="ngForm">
           <mat-form-field>
           <input matInput placeholder="Type" required formControlName="status" /></mat-form-field>
-        
+
           <mat-form-field>
           <input  matInput placeholder="Description" required formControlName="description" /></mat-form-field>
-        
+
           <mat-form-field>
           <input matInput placeholder="Update User" formControlName="updateusr" /></mat-form-field>
-        
+
           <mat-form-field>
           <input matInput placeholder="Update Date" formControlName="updatedte" /></mat-form-field>
       </form>
@@ -27,15 +27,15 @@ import { StatusType } from './status.types';
       <button mat-button (click)="onUpdate()" [disabled]="!myForm.form.valid" mat-flat-button color="primary" >
         Update
       </button>
-      
+
       <button mat-button (click)="onCreate()" [disabled]="!myForm.form.valid" mat-flat-button  color="primary" >
         Insert
       </button>
-      
+
       <button  mat-button (click)="onDelete()"  [disabled]="!myForm.form.valid" mat-flat-button  color="primary" >
         Delete
       </button>
-      
+
       <button mat-button (click)="closeDrawer()" mat-flat-button color="warn">
         Close
       </button>
@@ -45,7 +45,7 @@ import { StatusType } from './status.types';
    styles: ['.mat-card { font-weight: normal; }']
 })
 export class StatusDetailsComponent implements OnInit{
-  formGroup: UntypedFormGroup;
+  formGroup!: UntypedFormGroup;
   @Input() status: any;
 
   constructor(
@@ -67,7 +67,7 @@ export class StatusDetailsComponent implements OnInit{
       updatedte: updateDate,
       updateusr:'ADMIN',
     };
-    
+
     this.status = status
     this.formGroup = this.fb.group({
       status: [this.status.status],
