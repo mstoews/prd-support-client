@@ -11,6 +11,10 @@ const routes: Route[] = [
     redirectTo: 'dashboard',
     pathMatch: 'full',
   },
+  {
+    path: 'blog',
+    loadChildren: () => import('./components/blog/blog.module').then((mod) => mod.BlogModule),
+  },
   // {
   //   path: 'kanban',
   //   loadChildren: () =>

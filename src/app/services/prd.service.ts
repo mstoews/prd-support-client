@@ -18,6 +18,7 @@ export class PrdService {
     },
   };
 
+  /* User Lists and Colums */
   public getUserList() {
     return this.userGQL.watch().valueChanges.pipe(map((result) => result.data.users));
   }
@@ -28,7 +29,20 @@ export class PrdService {
       { headerName: 'Last Name', field: 'lastname' },
       { headerName: 'Email', field: 'email' },
       { headerName: 'Role', field: 'role' },
-      { headerName: 'Created Date', field: 'createAt' },
+      {
+        headerName: 'Date Updated',
+        field: 'createdAt',
+        minWidth: 150,
+        filter: 'agDateColumnFilter',
+        valueFormatter: this.dateFormatter,
+      },
+      {
+        headerName: 'Date Updated',
+        field: 'updatedAt',
+        minWidth: 150,
+        filter: 'agDateColumnFilter',
+        valueFormatter: this.dateFormatter,
+      },
     ];
     return cols;
   }

@@ -1,0 +1,16 @@
+<div class="h-full overflow-hidden border-2 border-gray-800 rounded-lg">
+  <img class="object-cover object-center w-full lg:h-48 md:h-36" src={{image1}} alt="blog">
+  <div class="p-6">
+    <h1 class="mb-3 text-lg font-medium text-black title-font">{{title}}</h1>
+    <p class="mb-3 leading-relaxed">{{description}}</p>
+    <div class="flex flex-wrap items-center ">
+      <a class="inline-flex items-center text-indigo-400 md:mb-2 lg:mb-0">Learn More
+        <mat-icon [svgIcon]="'mat_outline:arrow_right_alt'"></mat-icon>
+      </a>
+      <span class="inline-flex items-center py-1 pr-3 ml-auto mr-3 text-sm leading-none text-gray-500 border-r-2 border-gray-800 lg:ml-auto md:ml-0">
+        <mat-icon [svgIcon]="'mat_outline:reviews'"></mat-icon> {{reviews}} </span>
+      <span class="inline-flex items-center text-sm leading-none text-gray-500">
+        <mat-icon [svgIcon]="'mat_outline:favorite'"></mat-icon> {{likes}} </span>
+    </div>
+  </div>
+</div>

@@ -11,7 +11,7 @@ $secondary-text-color: #6D6D6D;
 $divider-color: #BDBDBD;
 
 .ag-theme-alpine {
-  @include ag-theme-alpine (( 
+  @include ag-theme-alpine ((
       alpine-active-color: $primary-color-dark,
       background-color: $accent-color,
       foreground-color: $primary-color-text,
@@ -88,6 +88,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+
+#blog {
+  background-image: url('assets/img/rainbow.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 
 @media (max-width: 576px) {
   #hero {

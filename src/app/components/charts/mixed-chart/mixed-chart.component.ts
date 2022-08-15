@@ -71,9 +71,9 @@ export class MixedChartComponent {
         width: [1, 1, 4]
       },
       title: {
-        text: "XYZ - Stock Analysis (2009 - 2016)",
+        text: "Updated",
         align: "left",
-        offsetX: 110
+        offsetX: 30
       },
       xaxis: {
         categories: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016]

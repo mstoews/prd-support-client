@@ -13,7 +13,7 @@ export interface ITeam {
 
 @Component({
   selector: 'team-list',
-  template: `
+  template: ` <div class="rounded">
     <ng-container *ngIf="team$ | async as team">
       <grid
         [cols]="cols"
@@ -22,6 +22,7 @@ export interface ITeam {
       >
       </grid>
     </ng-container>
+    </div>
   `,
 })
 export class TeamComponent {

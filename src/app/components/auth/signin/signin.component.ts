@@ -11,7 +11,7 @@ import { MaterialModule } from 'app/MaterialModule';
 import { BlogComponent } from '../../blog/blog.component';
 import { GalleryComponent } from '../../gallery/gallery.component';
 import { DndComponent } from '../../loaddnd/dnd.component';
-import { MenubarComponent } from '../../menubar/menubar.component';
+import { MenubarComponent } from '../../dashboard/menubar/menubar.component';
 
 @Component({
   standalone: true,

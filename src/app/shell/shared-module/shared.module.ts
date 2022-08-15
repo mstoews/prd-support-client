@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { SideNavComponent } from '../sidenav/sidenav.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ShellComponent } from '../shell.component';
-import { MenubarComponent } from 'app/components/menubar/menubar.component';
+import { MenubarComponent } from 'app/components/dashboard/menubar/menubar.component';
 import { NavItemComponent } from '../static-sidebar/nav-list-item/nav-item.component';
 import { StaticSidebarComponent } from '../static-sidebar/static-sidebar.component';
 import { MaterialModule } from '../../MaterialModule';

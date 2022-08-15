@@ -17,6 +17,11 @@ import { MixedChartComponent} from './mixed-chart/mixed-chart.component';
   ],
   imports: [
     MaterialModule, CommonModule, IconsModule, NgApexchartsModule
-  ]
+  ],
+  exports:
+  [BarComponent,
+    LineComponent,
+    PieComponent,
+    MixedChartComponent]
 })
 export class ChartsModule { }

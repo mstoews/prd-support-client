@@ -12,6 +12,8 @@ import { AlertsComponent } from '../alerts/alerts.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { TeamComponent } from './team-list/team-list.component';
 import { MaterialModule } from '../../MaterialModule';
+import { SharedModule } from '../../shell/shared-module/shared.module';
+import { ChartsModule } from '../charts/charts.module';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { MaterialModule } from '../../MaterialModule';
     MaterialModule,
     NgApexchartsModule,
     AlertsComponent,
-
+    SharedModule,
+    ChartsModule
   ],
 })
 export class DashboardModule { }
