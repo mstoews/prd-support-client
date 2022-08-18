@@ -7,6 +7,10 @@ const routes: Route[] = [
     loadChildren: () => import('./components/dashboard/dashboard.module').then((mod) => mod.DashboardModule),
   },
   {
+    path: 'customer-service',
+    loadChildren: () => import('./components/customer-service/customer-service.module').then((mod) => mod.CustomerServiceModule),
+  },
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',

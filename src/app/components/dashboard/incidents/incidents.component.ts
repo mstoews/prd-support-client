@@ -7,13 +7,10 @@ import { ScrollService } from 'app/services/scroll.service';
   styleUrls: ['./incidents.component.css']
 })
 export class IncidentsComponent implements OnInit {
+  title = 'Incident Frequency';
   constructor(
-
     private scrollTo: ScrollService) {}
-
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   scrollToId(id: string) {
     console.log("element id : ", id);
