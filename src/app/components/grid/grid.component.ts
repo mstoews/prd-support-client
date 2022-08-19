@@ -20,7 +20,6 @@ import { MenuBarService } from 'app/services/menu.bar.service';
       style="width: 100%;"
       class="ag-theme-alpine-dark"
       [defaultColDef]="defaultColDef"
-      [enableRangeSelection]="true"
       [animateRows]="true"
       domLayout="autoHeight"
       [rowData]="rows"

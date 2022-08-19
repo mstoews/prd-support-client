@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { MaterialModule } from '../MaterialModule';
-import { MenubarComponent } from '../dashboard/menubar/menubar.component';
+import { MenubarComponent } from '../../modules/dashboard/menubar/menubar.component';
 import { IconsModule } from '../icons.module';
 import { SidenavComponent } from '../../shell/sidenav/sidenav.component';
 

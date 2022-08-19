@@ -8,10 +8,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { IconsModule } from 'app/icons.module';
 import { MaterialModule } from 'app/MaterialModule';
-import { BlogComponent } from '../../blog/blog.component';
-import { GalleryComponent } from '../../gallery/gallery.component';
-import { DndComponent } from '../../loaddnd/dnd.component';
-import { MenubarComponent } from '../../dashboard/menubar/menubar.component';
+import { BlogComponent } from '../../../blog/blog.component';
+import { GalleryComponent } from '../../../../components/gallery/gallery.component';
+import { DndComponent } from '../../../../components/loaddnd/dnd.component';
+import { MenubarComponent } from '../../../dashboard/menubar/menubar.component';
 
 @Component({
   standalone: true,

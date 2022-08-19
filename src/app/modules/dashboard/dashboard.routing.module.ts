@@ -5,6 +5,7 @@ import { IncidentsComponent } from './incidents/incidents.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MonitoringComponent } from './monitoring/monitoring.component';
 import { ServiceRequestsComponent } from './service-requests/service-requests.component';
+import { ClientServiceComponent } from '../customer-service/client-service/client-service.component';
 
 
 const routes: Routes = [

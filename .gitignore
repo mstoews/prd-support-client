@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /bazel-out
+/carbon-lang
 
 # Node
 /node_modules

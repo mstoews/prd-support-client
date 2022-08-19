@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CustomerServiceComponent } from './customer-service.component';
+import { ClientServiceComponent } from './client-service/client-service.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: CustomerServiceComponent,
+    component: ClientServiceComponent,
   },
 ];
 

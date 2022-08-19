@@ -144,5 +144,25 @@ query User {
 }
 
 
+query ClientService {
+  ClientService {
+    application
+    client_service_manager
+    client_id
+    clientname
+    contacts
+    csm_contacts
+    environment
+    last_updated
+    open_issues
+    rag
+    rag_trend
+    timeandmaterialgoals
+  }
+}
+
+
+
+
 
 

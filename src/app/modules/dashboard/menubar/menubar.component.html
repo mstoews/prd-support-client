@@ -1,0 +1,29 @@
+<mat-toolbar class="flex flex-wrap items-center justify-between p-6 text-white bg-gray-500">
+
+  <div class="flex-grow block w-full lg:flex lg:items-center lg:w-auto">
+    <div class="flex items-center justify-between w-full lg:w-auto">
+          <p class="text-2xl font-medium leading-5 text-gray-300">Incident Management</p>
+    </div>
+  </div>
+
+  <span class="fill-space"></span>
+  <button (click)="onClickRefresh()" mat-icon-button matTooltip="Refresh Grid" aria-label="refresh">
+    <mat-icon [svgIcon]="'heroicons_outline:refresh'"></mat-icon>
+  </button>
+
+  <button (click)="onClickClone()" mat-icon-button matTooltip="Clone" aria-label="clone">
+    <mat-icon [svgIcon]="'mat_outline:content_copy'"></mat-icon>
+  </button>
+  <button (click)="onClickAdd()" mat-icon-button matTooltip="Add" aria-label="Delete">
+    <mat-icon class="side-nav__icon" [svgIcon]="'mat_outline:note_add'"></mat-icon>
+  </button>
+  <button (click)="onClickDelete()" mat-icon-button matTooltip="Delete" aria-label="Delete">
+    <mat-icon class="side-nav__icon" [svgIcon]="'heroicons_outline:trash'"></mat-icon>
+  </button>
+  <button (click)="onClickBackUp()" mat-icon-button matTooltip="BackUp" aria-label="BackUp">
+    <mat-icon class="side-nav__icon" [svgIcon]="'mat_outline:cloud_upload'"></mat-icon>
+  </button>
+  <button (click)="onClickRestore()" mat-icon-button matTooltip="Restore" aria-label="Restore">
+    <mat-icon class="side-nav__icon" [svgIcon]="'mat_outline:restore'"></mat-icon>
+  </button>
+</mat-toolbar>

@@ -4,11 +4,11 @@ import { RouterModule, Route } from '@angular/router';
 const routes: Route[] = [
   {
     path: 'dashboard',
-    loadChildren: () => import('./components/dashboard/dashboard.module').then((mod) => mod.DashboardModule),
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then((mod) => mod.DashboardModule),
   },
   {
-    path: 'customer-service',
-    loadChildren: () => import('./components/customer-service/customer-service.module').then((mod) => mod.CustomerServiceModule),
+    path: 'client-service',
+    loadChildren: () => import('./modules/customer-service/customer-service.module').then((mod) => mod.CustomerServiceModule),
   },
   {
     path: '',
@@ -17,7 +17,7 @@ const routes: Route[] = [
   },
   {
     path: 'blog',
-    loadChildren: () => import('./components/blog/blog.module').then((mod) => mod.BlogModule),
+    loadChildren: () => import('./modules/blog/blog.module').then((mod) => mod.BlogModule),
   },
   // {
   //   path: 'kanban',

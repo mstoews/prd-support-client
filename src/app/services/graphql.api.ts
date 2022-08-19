@@ -28,56 +28,33 @@ export type Auth = {
 
 export type ClientServiceInputs = {
   application: Scalars['String'];
+  client_id: Scalars['String'];
   client_service_manager: Scalars['String'];
-  clientid: Scalars['String'];
   clientname: Scalars['String'];
   contacts: Scalars['String'];
   csm_contacts: Scalars['String'];
   environment: Scalars['String'];
   last_updated: Scalars['String'];
-  open_issues_id: Scalars['String'];
+  open_issues: Scalars['String'];
   rag: Scalars['String'];
   rag_trend: Scalars['String'];
-  timeandmaterialgoalsid: Scalars['String'];
+  timeandmaterialgoals: Scalars['String'];
 };
 
 export type ClientServiceModel = {
   __typename?: 'ClientServiceModel';
   application: Scalars['String'];
+  client_id: Scalars['String'];
   client_service_manager: Scalars['String'];
-  clientid: Scalars['String'];
   clientname: Scalars['String'];
   contacts: Scalars['String'];
   csm_contacts: Scalars['String'];
   environment: Scalars['String'];
   last_updated: Scalars['String'];
-  open_issues_id: Scalars['String'];
+  open_issues: Scalars['String'];
   rag: Scalars['String'];
   rag_trend: Scalars['String'];
-  timeandmaterialgoalsid: Scalars['String'];
-};
-
-export type DashboardInputs = {
-  clientid: Scalars['Int'];
-  dashboardtype: Scalars['String'];
-  maintitle?: InputMaybe<Scalars['String']>;
-  maintitlecount?: InputMaybe<Scalars['String']>;
-  maintitlecountthreedays?: InputMaybe<Scalars['String']>;
-  maintitlecounttwodays?: InputMaybe<Scalars['String']>;
-  maintitlecountyesterday?: InputMaybe<Scalars['String']>;
-  subtitle?: InputMaybe<Scalars['String']>;
-};
-
-export type DashboardModel = {
-  __typename?: 'DashboardModel';
-  clientid: Scalars['Int'];
-  dashboardtype: Scalars['String'];
-  maintitle?: Maybe<Scalars['String']>;
-  maintitlecount?: Maybe<Scalars['String']>;
-  maintitlecountthreedays?: Maybe<Scalars['String']>;
-  maintitlecounttwodays?: Maybe<Scalars['String']>;
-  maintitlecountyesterday?: Maybe<Scalars['String']>;
-  subtitle?: Maybe<Scalars['String']>;
+  timeandmaterialgoals: Scalars['String'];
 };
 
 export type KanbanInputs = {
@@ -110,14 +87,12 @@ export type LoginInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   createClientServices: ClientServiceModel;
-  createDashboards: DashboardModel;
   createKanbanPriority: Kb_Priority;
   createKanbanStatus: Kb_Status;
   createKanbanType: Kb_Type;
   createSubTask: SubTasks;
   createTask: Kb_Task;
   deleteClientServices: ClientServiceModel;
-  deleteDashboards: DashboardModel;
   deleteKanbanPriority: Kb_Priority;
   deleteKanbanStatus: Kb_Status;
   deleteKanbanSubTask: SubTasks;
@@ -128,7 +103,6 @@ export type Mutation = {
   resetPassword: User;
   signup: User;
   updateClientServices: ClientServiceModel;
-  updateDashboards: DashboardModel;
   updateKanbanPriority: Kb_Priority;
   updateKanbanStatus: Kb_Status;
   updateKanbanType: Kb_Type;
@@ -140,11 +114,6 @@ export type Mutation = {
 
 export type MutationCreateClientServicesArgs = {
   data: ClientServiceInputs;
-};
-
-
-export type MutationCreateDashboardsArgs = {
-  data: DashboardInputs;
 };
 
 
@@ -174,13 +143,7 @@ export type MutationCreateTaskArgs = {
 
 
 export type MutationDeleteClientServicesArgs = {
-  clientid: Scalars['Int'];
-};
-
-
-export type MutationDeleteDashboardsArgs = {
-  clientid: Scalars['Int'];
-  dashboardtype: Scalars['String'];
+  client_id: Scalars['Int'];
 };
 
 
@@ -231,15 +194,8 @@ export type MutationSignupArgs = {
 
 
 export type MutationUpdateClientServicesArgs = {
-  clientid: Scalars['Int'];
+  client_id: Scalars['Int'];
   newData: ClientServiceInputs;
-};
-
-
-export type MutationUpdateDashboardsArgs = {
-  clientid: Scalars['Int'];
-  dashboard: DashboardInputs;
-  dashboardtype: Scalars['String'];
 };
 
 
@@ -425,8 +381,6 @@ export type Query = {
   __typename?: 'Query';
   ClientService: Array<ClientServiceModel>;
   ClientServicesById: Array<ClientServiceModel>;
-  Dashboards: Array<DashboardModel>;
-  DashboardsById: DashboardModel;
   GIB: Scalars['String'];
   KanbanByTaskId: Array<Kb_Task>;
   KanbanFirstTask: Kb_Task;
@@ -442,6 +396,7 @@ export type Query = {
   KanbanType: Array<Kb_Type>;
   KanbanTypeById: Array<Kb_Type>;
   KanbanUniqueByTaskId: Kb_Task;
+  ServiceRequest: Array<ServiceRequestModel>;
   SubTaskById: Array<SubTasks>;
   SubTasks: Array<SubTasks>;
   SubTasksByTaskId: Array<SubTasks>;
@@ -451,13 +406,7 @@ export type Query = {
 
 
 export type QueryClientServicesByIdArgs = {
-  clientid: Scalars['Int'];
-};
-
-
-export type QueryDashboardsByIdArgs = {
-  clientid: Scalars['Int'];
-  dashboardtype: Scalars['String'];
+  client_id: Scalars['Int'];
 };
 
 
@@ -522,13 +471,30 @@ export type QuerySubTasksByTaskIdArgs = {
   task_id: Scalars['String'];
 };
 
+export type ServiceRequestModel = {
+  __typename?: 'ServiceRequestModel';
+  case_overview: Scalars['String'];
+  client_id: Scalars['Int'];
+  completion_date: Scalars['Date'];
+  info: Scalars['String'];
+  product_name: Scalars['String'];
+  requested_by: Scalars['String'];
+  service_request_stat: Scalars['String'];
+  severity: Scalars['String'];
+  sr_id: Scalars['Int'];
+  submitted_by: Scalars['String'];
+  summary: Scalars['String'];
+  userid: Scalars['String'];
+  work_around: Scalars['String'];
+};
+
 export type SignupInput = {
-  client_ref?: InputMaybe<Scalars['String']>;
   createdAt: Scalars['String'];
   email: Scalars['String'];
   firstname?: InputMaybe<Scalars['String']>;
+  hashed_password: Scalars['String'];
   lastname?: InputMaybe<Scalars['String']>;
-  password: Scalars['String'];
+  passport_changed_at: Scalars['String'];
   role: Scalars['String'];
   updatedAt: Scalars['String'];
   userid: Scalars['String'];
@@ -583,6 +549,7 @@ export type User = {
   email: Scalars['String'];
   firstname?: Maybe<Scalars['String']>;
   lastname?: Maybe<Scalars['String']>;
+  passport_changed_at: Scalars['String'];
   role: Scalars['String'];
   updatedAt: Scalars['Date'];
   userid: Scalars['ID'];
@@ -752,6 +719,11 @@ export type UserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type UserQuery = { __typename?: 'Query', users: Array<{ __typename?: 'User', userid: string, firstname?: string | null, lastname?: string | null, createdAt: any, updatedAt: any, email: string, role: string }> };
+
+export type ClientServiceQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ClientServiceQuery = { __typename?: 'Query', ClientService: Array<{ __typename?: 'ClientServiceModel', application: string, client_service_manager: string, client_id: string, clientname: string, contacts: string, csm_contacts: string, environment: string, last_updated: string, open_issues: string, rag: string, rag_trend: string, timeandmaterialgoals: string }> };
 
 export const KanbanTaskFragmentDoc = gql`
     fragment KanbanTask on kb_task {
@@ -1097,6 +1069,35 @@ export const UserDocument = gql`
   })
   export class UserGQL extends Apollo.Query<UserQuery, UserQueryVariables> {
     override document = UserDocument;
+
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const ClientServiceDocument = gql`
+    query ClientService {
+  ClientService {
+    application
+    client_service_manager
+    client_id
+    clientname
+    contacts
+    csm_contacts
+    environment
+    last_updated
+    open_issues
+    rag
+    rag_trend
+    timeandmaterialgoals
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class ClientServiceGQL extends Apollo.Query<ClientServiceQuery, ClientServiceQueryVariables> {
+    override document = ClientServiceDocument;
 
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

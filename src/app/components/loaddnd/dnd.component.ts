@@ -9,7 +9,7 @@ import { MaterialModule } from '../../MaterialModule';
 import { ProgressComponent } from '../progress/progress.component';
 import { DndDirective } from './dnd.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ImageUrl} from '../models/imageUrl.model'
+import { ImageUrl} from '../../models/imageUrl.model'
 // import { persistenceEnabled as _persistenceEnabled } from '../../app.module';
 import { traceUntilFirst } from '@angular/fire/performance';
 import {
