@@ -7,13 +7,17 @@ import { IconsModule } from 'app/icons.module';
 import { MaterialModule } from 'app/MaterialModule';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { MixedChartComponent} from './mixed-chart/mixed-chart.component';
+import { RadarComponent } from './radar/radar.component';
+import { AreaComponent } from './area/area.component';
 
 @NgModule({
   declarations: [
     BarComponent,
     LineComponent,
     PieComponent,
-    MixedChartComponent
+    MixedChartComponent,
+    RadarComponent,
+    AreaComponent
   ],
   imports: [
     MaterialModule, CommonModule, IconsModule, NgApexchartsModule
@@ -22,6 +26,7 @@ import { MixedChartComponent} from './mixed-chart/mixed-chart.component';
   [BarComponent,
     LineComponent,
     PieComponent,
+    RadarComponent,
     MixedChartComponent]
 })
 export class ChartsModule { }

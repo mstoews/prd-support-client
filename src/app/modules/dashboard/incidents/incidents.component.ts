@@ -4,7 +4,6 @@ import { ScrollService } from 'app/services/scroll.service';
 @Component({
   selector: 'app-incidents',
   templateUrl: './incidents.component.html',
-  styleUrls: ['./incidents.component.css']
 })
 export class IncidentsComponent implements OnInit {
   title = 'Incident Frequency';

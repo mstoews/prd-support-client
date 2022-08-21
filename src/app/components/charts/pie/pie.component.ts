@@ -35,13 +35,13 @@ export class PieComponent implements OnInit {
 
   constructor() {
     this.chartOptions = {
-      series: [44, 55, 41, 17, 15],
+      series: [44, 25, 41, 17, 15],
       chart: {
         width: 380,
         type: "donut"
       },
       dataLabels: {
-        enabled: false
+        enabled: true
       },
       fill: {
         type: "gradient"
@@ -56,7 +56,7 @@ export class PieComponent implements OnInit {
           breakpoint: 480,
           options: {
             chart: {
-              width: 200
+              width: 300
             },
             legend: {
               position: "bottom"
