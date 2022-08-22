@@ -45,7 +45,7 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [
-        TaskComponent,
+
         KanbanBoardComponent,
         KanbanMainComponent,
         KanbanGroupComponent,

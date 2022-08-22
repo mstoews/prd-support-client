@@ -1,30 +1,30 @@
-<menubar></menubar>
 
-
-<div class="container p-1">
-  <section class="text-gray-500 bg-gray-200 body-font">
-    <div class="container px-5 py-24 mx-auto">
+<div class="container p-2">
+  <menubar></menubar>
+  <section class="text-gray-500 bg-gray-200 rounded-lg body-font">
+    <div class="container px-5 py-24 mx-auto ">
       <div class="flex flex-wrap -m-4">
         <div class="p-4 md:w-1/3">
           <div class="h-full overflow-hidden bg-gray-300 rounded-lg">
-            <div class="text-3xl font-medium text-bold text-primary">Incident Types</div>
+            <div class="text-3xl font-medium text-center text-bold text-primary">Incident Types</div>
             <line-chart></line-chart>
           </div>
         </div>
         <div class="p-4 md:w-1/3">
           <div class="h-full overflow-hidden bg-gray-300 rounded-lg">
-            <div class="text-3xl font-medium text-bold text-primary">Incident Per Year</div>
+            <div class="text-3xl font-medium text-center text-bold text-primary">Incident Per Year</div>
             <app-mixed-chart></app-mixed-chart>
           </div>
         </div>
         <div class="p-4 md:w-1/3">
           <div class="h-full overflow-hidden bg-gray-300 rounded-lg">
-            <div class="text-3xl font-medium text-bold text-primary">Incident Cross Sections</div>
+            <div class="text-3xl font-medium text-center text-bold text-primary">Incident Cross Sections</div>
             <radar-chart></radar-chart>
           </div>
         </div>
       </div>
     </div>
   </section>
+  <team-list></team-list>
 </div>
-<team-list></team-list>
+

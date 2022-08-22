@@ -1,16 +1,11 @@
 <section id="hero">
-  <!-- <menubar class="bg-red-50"></menubar> -->
-  <!-- Hero Container -->
-  <div class="container px-6 py-10 mx-auto transition-opacity duration-200 ease-in opacity-50 max-w-8xl scroll-smooth md:p-8 hover:opacity-100">
-    <!-- Menu/Logo Container -->
-    <nav class="flex items-center justify-between text-2xl text-white fontold">
-      <!-- Logo -->
+  <div
+    class="container px-6 py-10 mx-auto transition-opacity duration-200 ease-in opacity-50 max-w-8xl scroll-smooth md:p-8 hover:opacity-100">
 
-      <p class="text-4xl font-black text-gray-300 uppercase ">PRODUCTION DASHBOARD</p>
-      <!-- Menu -->
+    <nav class="flex items-center justify-between text-2xl text-white fontold">
+      <p class="text-6xl font-black text-gray-300 uppercase ">PRODUCTION DASHBOARD</p>
       <div class="hidden h-10 text-2xl font-alata md:flex md:space-x-8">
         <div class="text-gray-200 uppercase text-1xl group">
-          <!-- <a (click)="onEvent()">Events</a> -->
           <button class="uppercase" (click)="scrollToId('alerts')">Alerts</button>
           <div class="mx-2 group-hover:border-b group-hover:border-blue-50"></div>
         </div>
@@ -27,9 +22,8 @@
           <button class="uppercase" (click)="scrollToId('tasks')">tasks</button>
           <div class="mx-2 group-hover:border-b group-hover:border-blue-50"></div>
         </div>
-
       </div>
-      <!-- Hamburger Button -->
+
       <div class="md:hidden">
         <button id="menu-btn" type="button" class="z-40 block hamburger md:hidden focus:outline-none">
           <span class="hamburger-top"></span>
@@ -49,14 +43,29 @@
     </div>
 
     <div
-      class="max-w-lg p-4 mt-32 mb-32 font-sans text-4xl text-white uppercase border-2 md:p-10 md:m-32 md:mx-0 md:text-6xl">
-      Tokyo Production Support Statistics and Analytics
+      class="max-w-6xl p-4 mt-32 mb-32 font-sans text-4xl text-white uppercase border-2 md:p-10 md:m-32 md:mx-0 md:text-6xl">
+      Tokyo Production Support Statistics & Analytics
     </div>
-
+    <div class="flex flex-wrap -m-4">
+      <div class="p-4 md:w-1/4">
+        <div class="h-full overflow-hidden bg-gray-300 rounded-lg">
+          <data-card [title]="'GLOSS'" [amount]="14" [trending]=true [comment]="'meeting expectation'"></data-card>
+        </div>
+      </div>
+      <div class="p-4 md:w-1/4">
+        <div class="h-full overflow-hidden bg-gray-300 rounded-lg">
+          <data-card [title]="'GLOSS'" [amount]="14" [trending]=true [comment]="'meeting expectation'"></data-card>
+        </div>
+      </div>
+      <div class="p-4 md:w-1/4">
+        <div class="h-full overflow-hidden bg-gray-300 rounded-lg">
+          <data-card [title]="'GLOSS'" [amount]="14" [trending]=true [comment]="'meeting expectation'"></data-card>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- Dashboard Section -->
 <section id="alerts" class="scroll-mt-20">
 
   <div class="container px-6 mx-auto my-32 text-gray-900 max-w-8xl md:px-0">

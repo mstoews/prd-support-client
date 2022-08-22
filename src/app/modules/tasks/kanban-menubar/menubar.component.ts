@@ -1,7 +1,5 @@
 import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { KanbanService } from '../module/kanban.service';
-import { Party } from 'app/services/api.service';
-import { PartyService } from '../../../services/prd.service';
 import { KanbanRefService } from '../module/kanban-party-ref.service';
 
 interface IValue {
@@ -22,17 +20,15 @@ export class KanbanMenubarComponent implements OnInit {
   @Output() notifyParentClone: EventEmitter<any> = new EventEmitter();
   @Output() notifyMenuItemChanged: EventEmitter<any> = new EventEmitter();
 
-  @Input() public inTitle: string;
-  @Input() public inPartyRef: string;
-  @Input() public selected: string;
+  @Input() public inTitle!: string | undefined;
+  @Input() public inPartyRef!: string | undefined;
+  @Input() public selected!: string | undefined;
   public partyReference$: any;
   public partyMenu$: any;
-  public menuItems: IValue[];
-  party: Party;
-
+  public menuItems!: IValue[];
+  
   constructor(
     public kanbanService: KanbanService,
-    public partyService: PartyService,
     public kanbanRefService: KanbanRefService
   ) {
     this.kanbanRefService.kanbanRefUpdated.subscribe((party) => {

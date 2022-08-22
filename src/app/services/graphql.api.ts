@@ -17,6 +17,31 @@ export type Scalars = {
   Date: any;
 };
 
+export type AlertsInput = {
+  client_id: Scalars['Int'];
+  day_of_the_week: Scalars['String'];
+  entity: Scalars['String'];
+  gateway: Scalars['String'];
+  geneos_id: Scalars['String'];
+  japan_date: Scalars['Date'];
+  sampler: Scalars['String'];
+  severity: Scalars['String'];
+  varname: Scalars['String'];
+};
+
+export type AlertsModel = {
+  __typename?: 'AlertsModel';
+  client_id: Scalars['Int'];
+  day_of_the_week: Scalars['String'];
+  entity: Scalars['String'];
+  gateway: Scalars['String'];
+  geneos_id: Scalars['String'];
+  japan_date: Scalars['Date'];
+  sampler: Scalars['String'];
+  severity: Scalars['String'];
+  varname: Scalars['String'];
+};
+
 export type Auth = {
   __typename?: 'Auth';
   /** JWT access token */
@@ -28,13 +53,13 @@ export type Auth = {
 
 export type ClientServiceInputs = {
   application: Scalars['String'];
-  client_id: Scalars['String'];
+  client_id: Scalars['Int'];
   client_service_manager: Scalars['String'];
   clientname: Scalars['String'];
   contacts: Scalars['String'];
   csm_contacts: Scalars['String'];
   environment: Scalars['String'];
-  last_updated: Scalars['String'];
+  last_updated: Scalars['Date'];
   open_issues: Scalars['String'];
   rag: Scalars['String'];
   rag_trend: Scalars['String'];
@@ -44,17 +69,29 @@ export type ClientServiceInputs = {
 export type ClientServiceModel = {
   __typename?: 'ClientServiceModel';
   application: Scalars['String'];
-  client_id: Scalars['String'];
+  client_id: Scalars['Int'];
   client_service_manager: Scalars['String'];
   clientname: Scalars['String'];
   contacts: Scalars['String'];
   csm_contacts: Scalars['String'];
   environment: Scalars['String'];
-  last_updated: Scalars['String'];
+  last_updated: Scalars['Date'];
   open_issues: Scalars['String'];
   rag: Scalars['String'];
   rag_trend: Scalars['String'];
   timeandmaterialgoals: Scalars['String'];
+};
+
+export type IssueModel = {
+  __typename?: 'IssueModel';
+  client_id: Scalars['Int'];
+  description: Scalars['String'];
+  due_date: Scalars['Date'];
+  issueid: Scalars['Int'];
+  severity: Scalars['String'];
+  start_date: Scalars['Date'];
+  update_date: Scalars['Date'];
+  update_user: Scalars['Date'];
 };
 
 export type KanbanInputs = {
@@ -84,15 +121,48 @@ export type LoginInput = {
   userid: Scalars['String'];
 };
 
+export type MasterInput = {
+  client_id: Scalars['Int'];
+  client_name: Scalars['String'];
+  description: Scalars['String'];
+  geneos_id: Scalars['String'];
+  jira_id: Scalars['String'];
+  location: Scalars['String'];
+  remedy_id: Scalars['String'];
+  update_date: Scalars['String'];
+  update_user: Scalars['String'];
+};
+
+export type MasterModel = {
+  __typename?: 'MasterModel';
+  client_id: Scalars['Int'];
+  client_name: Scalars['String'];
+  description: Scalars['String'];
+  geneos_id: Scalars['String'];
+  jira_id: Scalars['String'];
+  location: Scalars['String'];
+  remedy_id: Scalars['String'];
+  update_date: Scalars['String'];
+  update_user: Scalars['String'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
+  createAlert: AlertsModel;
+  createClientMasters: MasterModel;
   createClientServices: ClientServiceModel;
+  createIssue: IssueModel;
+  createKanbanComment: Kb_Comments;
   createKanbanPriority: Kb_Priority;
   createKanbanStatus: Kb_Status;
   createKanbanType: Kb_Type;
   createSubTask: SubTasks;
   createTask: Kb_Task;
+  deleteAlert: AlertsModel;
+  deleteClientMasters: MasterModel;
   deleteClientServices: ClientServiceModel;
+  deleteIssue: IssueModel;
+  deleteKanbanComment: Kb_Comments;
   deleteKanbanPriority: Kb_Priority;
   deleteKanbanStatus: Kb_Status;
   deleteKanbanSubTask: SubTasks;
@@ -102,7 +172,11 @@ export type Mutation = {
   refreshToken: Token;
   resetPassword: User;
   signup: User;
+  updateAlert: AlertsModel;
+  updateClientMasters: MasterModel;
   updateClientServices: ClientServiceModel;
+  updateIssue: IssueModel;
+  updateKanbanComment: Kb_Comments;
   updateKanbanPriority: Kb_Priority;
   updateKanbanStatus: Kb_Status;
   updateKanbanType: Kb_Type;
@@ -112,8 +186,28 @@ export type Mutation = {
 };
 
 
+export type MutationCreateAlertArgs = {
+  data: AlertsInput;
+};
+
+
+export type MutationCreateClientMastersArgs = {
+  data: MasterInput;
+};
+
+
 export type MutationCreateClientServicesArgs = {
   data: ClientServiceInputs;
+};
+
+
+export type MutationCreateIssueArgs = {
+  data: ClientServiceInputs;
+};
+
+
+export type MutationCreateKanbanCommentArgs = {
+  commentData: TaskCommentInputs;
 };
 
 
@@ -142,8 +236,28 @@ export type MutationCreateTaskArgs = {
 };
 
 
+export type MutationDeleteAlertArgs = {
+  geneos_id: Scalars['Int'];
+};
+
+
+export type MutationDeleteClientMastersArgs = {
+  clientid: Scalars['Int'];
+};
+
+
 export type MutationDeleteClientServicesArgs = {
   client_id: Scalars['Int'];
+};
+
+
+export type MutationDeleteIssueArgs = {
+  issueid: Scalars['Int'];
+};
+
+
+export type MutationDeleteKanbanCommentArgs = {
+  task_id: Scalars['String'];
 };
 
 
@@ -193,9 +307,33 @@ export type MutationSignupArgs = {
 };
 
 
+export type MutationUpdateAlertArgs = {
+  geneos_id: Scalars['Int'];
+  newData: AlertsInput;
+};
+
+
+export type MutationUpdateClientMastersArgs = {
+  client_id: Scalars['Int'];
+  newData: MasterInput;
+};
+
+
 export type MutationUpdateClientServicesArgs = {
   client_id: Scalars['Int'];
   newData: ClientServiceInputs;
+};
+
+
+export type MutationUpdateIssueArgs = {
+  issueid: Scalars['Int'];
+  newData: ClientServiceInputs;
+};
+
+
+export type MutationUpdateKanbanCommentArgs = {
+  kanbanData: TaskCommentInputs;
+  task_id: Scalars['String'];
 };
 
 
@@ -234,155 +372,20 @@ export type MutationUpdateTaskParentIdArgs = {
   task_id: Scalars['String'];
 };
 
-export type PartyAddress = {
-  __typename?: 'PartyAddress';
-  addr_line1: Scalars['String'];
-  addr_line2: Scalars['String'];
-  addr_line3: Scalars['String'];
-  addr_line4: Scalars['String'];
-  addr_line5: Scalars['String'];
-  addr_line6: Scalars['String'];
-  addr_type: Scalars['String'];
-  contact_name: Scalars['String'];
-  contact_title: Scalars['String'];
-  email: Scalars['String'];
-  fax_no: Scalars['String'];
-  int_dial_code: Scalars['String'];
-  party_ref: Scalars['String'];
-  phone_no: Scalars['String'];
-  post_code: Scalars['String'];
-  version_date: Scalars['Date'];
-  version_no: Scalars['Int'];
-  version_user: Scalars['String'];
-};
-
-export type PartyAssoc = {
-  __typename?: 'PartyAssoc';
-  assoc_party_ref: Scalars['String'];
-  assoc_type: Scalars['String'];
-  description: Scalars['String'];
-  party_ref: Scalars['String'];
-  user_def: Scalars['String'];
-  version_date: Scalars['Date'];
-  version_no: Scalars['Int'];
-  version_user: Scalars['String'];
-};
-
-export type PartyClassification = {
-  __typename?: 'PartyClassification';
-  class_code: Scalars['String'];
-  class_type: Scalars['String'];
-  description: Scalars['String'];
-  party_ref: Scalars['String'];
-  user_def: Scalars['String'];
-  version_date: Scalars['Date'];
-  version_no: Scalars['Int'];
-  version_user: Scalars['String'];
-};
-
-export type PartyDate = {
-  __typename?: 'PartyDate';
-  date: Scalars['String'];
-  date_type: Scalars['String'];
-  party_ref: Scalars['String'];
-  time: Scalars['String'];
-  version_date: Scalars['Date'];
-  version_no: Scalars['Int'];
-  version_user: Scalars['String'];
-};
-
-export type PartyExtRef = {
-  __typename?: 'PartyExtRef';
-  description: Scalars['String'];
-  party_ext_ref: Scalars['String'];
-  party_ext_ref_type: Scalars['String'];
-  party_ref: Scalars['String'];
-  user_def: Scalars['String'];
-  version_date: Scalars['Date'];
-  version_no: Scalars['Int'];
-  version_user: Scalars['String'];
-};
-
-export type PartyFlag = {
-  __typename?: 'PartyFlag';
-  description: Scalars['String'];
-  flag_code: Scalars['String'];
-  flag_type: Scalars['Int'];
-  party_ref: Scalars['String'];
-  user_def: Scalars['String'];
-  version_date: Scalars['Date'];
-  version_no: Scalars['Int'];
-  version_user: Scalars['String'];
-};
-
-export type PartyInstr = {
-  __typename?: 'PartyInstr';
-  description: Scalars['String'];
-  instr_ref: Scalars['String'];
-  instr_ref_type: Scalars['String'];
-  instr_type: Scalars['String'];
-  party_ref: Scalars['String'];
-  user_def: Scalars['String'];
-  version_date: Scalars['Date'];
-  version_no: Scalars['Int'];
-  version_user: Scalars['String'];
-};
-
-export type PartyNarrative = {
-  __typename?: 'PartyNarrative';
-  description: Scalars['String'];
-  narr_type: Scalars['String'];
-  narrative: Scalars['String'];
-  party_ref: Scalars['String'];
-  user_def: Scalars['String'];
-  version_date: Scalars['Date'];
-  version_no: Scalars['Int'];
-  version_user: Scalars['String'];
-};
-
-export type PartySsi = {
-  __typename?: 'PartySSI';
-  account_name: Scalars['String'];
-  account_no: Scalars['String'];
-  active_ind: Scalars['String'];
-  ccy: Scalars['String'];
-  comms_service: Scalars['String'];
-  dacc_ref: Scalars['String'];
-  depo_ref: Scalars['String'];
-  depot_alias: Scalars['String'];
-  depot_descr: Scalars['String'];
-  depot_type: Scalars['String'];
-  description: Scalars['String'];
-  party_ref: Scalars['String'];
-  user_def: Scalars['String'];
-  version_date: Scalars['Date'];
-  version_no: Scalars['Int'];
-  version_user: Scalars['String'];
-};
-
-export type PartySwift = {
-  __typename?: 'PartySwift';
-  branch_code: Scalars['String'];
-  channel: Scalars['String'];
-  company_name: Scalars['String'];
-  host: Scalars['String'];
-  incoming_queue: Scalars['String'];
-  logical_term_id: Array<Scalars['String']>;
-  outgoing_queue: Scalars['String'];
-  party_ref: Scalars['String'];
-  port_number: Scalars['Int'];
-  queue_mgr: Scalars['String'];
-  version_date: Scalars['Date'];
-  version_no: Scalars['Int'];
-  version_user: Scalars['String'];
-};
-
 export type Query = {
   __typename?: 'Query';
+  Alert: Array<AlertsModel>;
+  AlertById: Array<AlertsModel>;
+  ClientMaster: Array<MasterModel>;
+  ClientMastersById: Array<MasterModel>;
   ClientService: Array<ClientServiceModel>;
   ClientServicesById: Array<ClientServiceModel>;
   GIB: Scalars['String'];
+  Issue: Array<IssueModel>;
+  IssueById: Array<IssueModel>;
   KanbanByTaskId: Array<Kb_Task>;
+  KanbanComments: Array<Kb_Comments>;
+  KanbanCommentsById: Array<Kb_Comments>;
   KanbanFirstTask: Kb_Task;
   KanbanPriority: Array<Kb_Priority>;
   KanbanPriorityById: Array<Kb_Priority>;
@@ -400,8 +403,19 @@ export type Query = {
   SubTaskById: Array<SubTasks>;
   SubTasks: Array<SubTasks>;
   SubTasksByTaskId: Array<SubTasks>;
+  getFirstClient: MasterModel;
   me: User;
   users: Array<User>;
+};
+
+
+export type QueryAlertByIdArgs = {
+  geneos_id: Scalars['Int'];
+};
+
+
+export type QueryClientMastersByIdArgs = {
+  client_id: Scalars['Int'];
 };
 
 
@@ -410,8 +424,18 @@ export type QueryClientServicesByIdArgs = {
 };
 
 
+export type QueryIssueByIdArgs = {
+  issueid: Scalars['Int'];
+};
+
+
 export type QueryKanbanByTaskIdArgs = {
   task_id: Scalars['String'];
+};
+
+
+export type QueryKanbanCommentsByIdArgs = {
+  priority: Scalars['String'];
 };
 
 
@@ -521,6 +545,15 @@ export type SubTasks = {
   type?: Maybe<Scalars['String']>;
 };
 
+export type TaskCommentInputs = {
+  comment_textL: Scalars['String'];
+  image_url: Scalars['String'];
+  task_id: Scalars['String'];
+  title: Scalars['String'];
+  updatedte: Scalars['Date'];
+  updateusr: Scalars['String'];
+};
+
 export type TaskPriorityInputs = {
   description: Scalars['String'];
   priority: Scalars['String'];
@@ -553,6 +586,16 @@ export type User = {
   role: Scalars['String'];
   updatedAt: Scalars['Date'];
   userid: Scalars['ID'];
+};
+
+export type Kb_Comments = {
+  __typename?: 'kb_comments';
+  comment_textL: Scalars['String'];
+  image_url: Scalars['String'];
+  task_id: Scalars['String'];
+  title: Scalars['String'];
+  updatedte: Scalars['Date'];
+  updateusr: Scalars['String'];
 };
 
 export type Kb_Priority = {
@@ -723,7 +766,17 @@ export type UserQuery = { __typename?: 'Query', users: Array<{ __typename?: 'Use
 export type ClientServiceQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ClientServiceQuery = { __typename?: 'Query', ClientService: Array<{ __typename?: 'ClientServiceModel', application: string, client_service_manager: string, client_id: string, clientname: string, contacts: string, csm_contacts: string, environment: string, last_updated: string, open_issues: string, rag: string, rag_trend: string, timeandmaterialgoals: string }> };
+export type ClientServiceQuery = { __typename?: 'Query', ClientService: Array<{ __typename?: 'ClientServiceModel', application: string, client_service_manager: string, client_id: number, clientname: string, contacts: string, csm_contacts: string, environment: string, last_updated: any, open_issues: string, rag: string, rag_trend: string, timeandmaterialgoals: string }> };
+
+export type ClientMasterQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ClientMasterQuery = { __typename?: 'Query', ClientMaster: Array<{ __typename?: 'MasterModel', client_id: number, description: string }> };
+
+export type GetFirstClientQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetFirstClientQuery = { __typename?: 'Query', getFirstClient: { __typename?: 'MasterModel', client_id: number, description: string } };
 
 export const KanbanTaskFragmentDoc = gql`
     fragment KanbanTask on kb_task {
@@ -1098,6 +1151,44 @@ export const ClientServiceDocument = gql`
   })
   export class ClientServiceGQL extends Apollo.Query<ClientServiceQuery, ClientServiceQueryVariables> {
     override document = ClientServiceDocument;
+
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const ClientMasterDocument = gql`
+    query clientMaster {
+  ClientMaster {
+    client_id
+    description
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class ClientMasterGQL extends Apollo.Query<ClientMasterQuery, ClientMasterQueryVariables> {
+    override document = ClientMasterDocument;
+
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetFirstClientDocument = gql`
+    query getFirstClient {
+  getFirstClient {
+    client_id
+    description
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetFirstClientGQL extends Apollo.Query<GetFirstClientQuery, GetFirstClientQueryVariables> {
+    override document = GetFirstClientDocument;
 
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

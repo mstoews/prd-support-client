@@ -185,9 +185,8 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
     this.assignRag(task);
 
     this.taskGroup = this.fb.group({
-      party_ref: [task.party_ref],
+      client_id: [task.client_id],
       task_id: [task.task_id],
-      client_ref: [task.client_ref],
       title: [task.title],
       status: [task.status],
       summary: [task.summary],
@@ -255,30 +254,30 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
       this.partyRef === '' ||
       this.partyRef === null
     ) {
-      this.partyRef = this.getFirstPartyRefByType(partyType);
+      this.partyRef = this.getFirstClient()
     }
     this.refreshData(this.partyRef);
   }
 
-  getFirstPartyRefByType(partyType: string): string {
-    return this.kanbanService.getFirstPartyRef(partyType);
+  getFirstClient(): string {
+    return this.kanbanService.getFirstClient();
   }
 
-  public refreshData(partyRef: string) {
+  public refreshData(client_id: string) {
     this.subOpen = this.kanbanService
-      .getKanbanTaskByRefAndStatus(partyRef, this.OPEN)
+      .getKanbanTaskByRefAndStatus(client_id, this.OPEN)
       .subscribe((task) => (this.openTasks = task));
 
     this.subProgress = this.kanbanService
-      .getKanbanTaskByRefAndStatus(partyRef, this.IN_PROGRESS)
+      .getKanbanTaskByRefAndStatus(client_id, this.IN_PROGRESS)
       .subscribe((task) => (this.progressTasks = task));
 
     this.subReview = this.kanbanService
-      .getKanbanTaskByRefAndStatus(partyRef, this.IN_REVIEW)
+      .getKanbanTaskByRefAndStatus(client_id, this.IN_REVIEW)
       .subscribe((task) => (this.reviewTasks = task));
 
     this.subComplete = this.kanbanService
-      .getKanbanTaskByRefAndStatus(partyRef, this.COMPLETED)
+      .getKanbanTaskByRefAndStatus(client_id, this.COMPLETED)
       .subscribe((task) => (this.completeTasks = task));
   }
 

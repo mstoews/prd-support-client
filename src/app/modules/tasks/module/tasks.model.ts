@@ -14,26 +14,26 @@ export type Scalars = {
 };
 
 export interface ITask {
-  assignee?: Maybe<Scalars['String']>;
-  classname?: Maybe<Scalars['String']>;
-  color?: Maybe<Scalars['String']>;
-  dependencies?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
-  due_date?: Maybe<Scalars['Date']>;
-  estimate?: Maybe<Scalars['Int']>;
-  Id?: Maybe<Scalars['Int']>;
-  parentId?: Maybe<Scalars['Int']>;
-  party_ref?: Maybe<Scalars['String']>;
-  client_ref?: Maybe<Scalars['String']>;
-  priority?: Maybe<Scalars['String']>;
-  rankid?: Maybe<Scalars['Int']>;
-  start_date?: Maybe<Scalars['Date']>;
-  status?: Maybe<Scalars['String']>;
-  summary?: Maybe<Scalars['String']>;
-  tags?: Maybe<Scalars['String']>;
-  task_id: Scalars['String'];
-  title?: Maybe<Scalars['String']>;
-  type?: Maybe<Scalars['String']>;
+   task_id: string;
+   client_id: string;
+   title: string;
+   status: string;
+   summary: string;
+   type: string;
+   priority: string;
+   tags: string;
+   estimate: number;
+   assignee: string;
+   rankid: number;
+   color: string;
+   classname: string;
+   description: string;
+   due_date: Date;
+   start_date: Date;
+   dependencies: string;
+   parentId: number;
+   Id: number;
+
 }
 
 export interface IBoard {

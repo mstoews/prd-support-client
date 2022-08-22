@@ -6,7 +6,7 @@ import { MaterialModule } from 'app/MaterialModule';
 @Component({
   standalone: true,
   imports: [MaterialModule, CommonModule, IconsModule],
-  selector: 'app-data-card',
+  selector: 'data-card',
   templateUrl: './data-card.component.html',
 })
 export class DataCardComponent implements OnInit {

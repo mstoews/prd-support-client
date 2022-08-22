@@ -17,6 +17,7 @@ import {LandingPageComponent} from './landing-page/landing-page.component';
 import {MonitoringComponent} from './monitoring/monitoring.component';
 import {ServiceRequestsComponent} from './service-requests/service-requests.component';
 import {TeamComponent} from './team-list/team-list.component';
+import { DataCardComponent } from '../../components/data-card/data-card.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import {TeamComponent} from './team-list/team-list.component';
   imports: [
     CommonModule, FormsModule, ReactiveFormsModule, GridAGModule,
     DashboardRoutingModule, MaterialModule, NgApexchartsModule, AlertsComponent,
-    SharedModule, ChartsModule
+    SharedModule, ChartsModule, DataCardComponent
   ],
 })
 export class DashboardModule {

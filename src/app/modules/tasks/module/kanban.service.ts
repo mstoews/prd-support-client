@@ -2,7 +2,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
-import * as glossApi from 'app/services/graphql.api';
+import * as kanbanApi from 'app/services/graphql.api';
 import { StatusType } from '../lists/status-list/status.types';
 import { ITask } from './tasks.model';
 
@@ -17,21 +17,22 @@ export class KanbanService {
 
   constructor(
     // Kanban Task
-    private readonly kanbanTasks: glossApi.KanbanTasksGQL,
-    private readonly kanbanPriority: glossApi.KanbanPriorityGQL,
-    private readonly kanbanByStatus: glossApi.KanbanByStatusGQL,
-    private readonly kanbanUpdateTask: glossApi.UpdateTaskGQL,
-    private readonly kanbanCreateTask: glossApi.CreateKanbanTaskGQL,
-    private readonly kanbanStatus: glossApi.KanbanStatusGQL,
-    private readonly kanbanType: glossApi.KanbanTypeGQL,
-    private readonly kanbanDeleteTask: glossApi.DeleteTaskGQL,
-    private readonly kanbanTaskByRefAndStatus: glossApi.KanbanTaskByRefAndStatusGQL,
-    private readonly kanbanTaskByRef: glossApi.KanbanTaskByRefGQL,
-    private readonly firstKanbanTask: glossApi.KanbanFirstTaskGQL,
-    private readonly kanbanTaskByTaskId: glossApi.KanbanTaskByTaskIdGQL,
-    private readonly updateTaskParentId: glossApi.UpdateTaskParentIdGQL,
-    private readonly kanbanStatusByIdGQL: glossApi.KanbanStatusByIdGQL,
-    private readonly userGQL: glossApi.UserGQL,
+    private readonly kanbanTasks: kanbanApi.KanbanTasksGQL,
+    private readonly kanbanPriority: kanbanApi.KanbanPriorityGQL,
+    private readonly kanbanByStatus: kanbanApi.KanbanByStatusGQL,
+    private readonly kanbanUpdateTask: kanbanApi.UpdateTaskGQL,
+    private readonly kanbanCreateTask: kanbanApi.CreateKanbanTaskGQL,
+    private readonly kanbanStatus: kanbanApi.KanbanStatusGQL,
+    private readonly kanbanType: kanbanApi.KanbanTypeGQL,
+    private readonly kanbanDeleteTask: kanbanApi.DeleteTaskGQL,
+    private readonly kanbanTaskByRefAndStatus: kanbanApi.KanbanTaskByRefAndStatusGQL,
+    private readonly kanbanTaskByRef: kanbanApi.KanbanTaskByRefGQL,
+    private readonly firstKanbanTask: kanbanApi.KanbanFirstTaskGQL,
+    private readonly kanbanTaskByTaskId: kanbanApi.KanbanTaskByTaskIdGQL,
+    private readonly updateTaskParentId: kanbanApi.UpdateTaskParentIdGQL,
+    private readonly kanbanStatusByIdGQL: kanbanApi.KanbanStatusByIdGQL,
+    private readonly getFirstClientGQL: kanbanApi.GetFirstClientGQL,
+    private readonly userGQL: kanbanApi.UserGQL,
 
   ) { }
 
@@ -56,6 +57,13 @@ export class KanbanService {
       .valueChanges.pipe(map((result) => result.data.KanbanFirstTask));
   }
 
+  public getFirstClient(): string {
+    let client_id!: string;
+    const rc = this.getFirstClientGQL.watch().valueChanges.pipe(map((result) => result.data.getFirstClient)).subscribe( (result: { client_id: any; }) => {
+      client_id = result.client_id
+    });
+    return client_id;
+  }
 
   public getUserList() {
     return this.userGQL.watch().valueChanges.pipe(map((result) => result.data.users));
@@ -74,7 +82,7 @@ export class KanbanService {
     });
   }
 
-  public KanbanCreate(task: glossApi.KanbanInputs) {
+  public KanbanCreate(task: kanbanApi.KanbanInputs) {
     return this.kanbanCreateTask.mutate({
       taskInput: task,
     });

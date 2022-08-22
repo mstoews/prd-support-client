@@ -161,6 +161,49 @@ query ClientService {
   }
 }
 
+query clientMaster {
+  ClientMaster {
+    client_id
+    description
+  }
+}
+
+query getFirstClient {
+  getFirstClient{
+    client_id
+    description
+  }
+}
+
+query User {
+  users {
+    userid
+    firstname
+    lastname
+    createdAt
+    updatedAt
+    email
+    role
+  }
+}
+
+query ClientService {
+  ClientService {
+    application
+    client_service_manager
+    client_id
+    clientname
+    contacts
+    csm_contacts
+    environment
+    last_updated
+    open_issues
+    rag
+    rag_trend
+    timeandmaterialgoals
+  }
+}
+
 
 
 

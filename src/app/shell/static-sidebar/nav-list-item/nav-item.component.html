@@ -1,7 +1,7 @@
 <li>
   <a mat-list-item class="flex items-center p-2 pr-5 font-normal text-gray-300 rounded-lg text-1xl grow hover:bg-gray-800 dark:hover:bg-gray-700" (click)="onItemSelected(item)">
     <mat-icon [svgIcon]=item.iconName> </mat-icon>
-    <span class="fill-space">{{item.displayName}}</span>
+    <span class="flex-1 ml-3 text-2x1 whitespace-nowrap">{{item.displayName}}</span>
     <div *ngIf="item.parent == true" >
       <div class="menu-button" [ngStyle]="{'color': '#797575'}" [ngClass]="{'clicked': isClicked}" >
           <mat-icon #chevron [svgIcon]="'heroicons_outline:chevron-right'"></mat-icon>
@@ -9,6 +9,7 @@
     </div>
   </a>
 </li>
+
 <div *ngIf="expanded">
   <app-nav-list-item *ngFor="let child of item.children" [item]="child" [depth]="depth+1">
   </app-nav-list-item>
