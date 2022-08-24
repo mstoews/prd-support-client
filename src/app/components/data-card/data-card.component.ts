@@ -15,10 +15,14 @@ export class DataCardComponent implements OnInit {
   @Input() trending: boolean = true;
   @Input() comment: string = 'meeting expectations';
   @Input() title: string = 'GLOSS';
+  @Input() header: string = 'Alerts'
+  @Input() current_date!: string;
 
   constructor() { }
 
   ngOnInit(): void {
+    let today = new Date();
+    this.current_date = today.toLocaleDateString();
   }
 
 }

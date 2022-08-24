@@ -1,6 +1,6 @@
 <section id="hero">
   <div
-    class="container px-6 py-10 mx-auto transition-opacity duration-200 ease-in opacity-50 max-w-8xl scroll-smooth md:p-8 hover:opacity-100">
+    class="container px-6 py-10 mx-auto transition-opacity duration-200 ease-in opacity-100 max-w-8xl scroll-smooth md:p-8 hover:opacity-100">
 
     <nav class="flex items-center justify-between text-2xl text-white fontold">
       <p class="text-6xl font-black text-gray-300 uppercase ">PRODUCTION DASHBOARD</p>
@@ -49,17 +49,23 @@
     <div class="flex flex-wrap -m-4">
       <div class="p-4 md:w-1/4">
         <div class="h-full overflow-hidden bg-gray-300 rounded-lg">
-          <data-card [title]="'GLOSS'" [amount]="14" [trending]=true [comment]="'meeting expectation'"></data-card>
+          <data-card
+          [header]= "'Monitoring'"
+          [title]="'Alerts'"
+          [amount]="14"
+          [trending]=false
+          [percentage_change]="50"
+          [comment]="'Above expectations for the day'"></data-card>
         </div>
       </div>
       <div class="p-4 md:w-1/4">
         <div class="h-full overflow-hidden bg-gray-300 rounded-lg">
-          <data-card [title]="'GLOSS'" [amount]="14" [trending]=true [comment]="'meeting expectation'"></data-card>
+          <data-card [header]= "'Incidents'" [title]="'Events'" [amount]="0" [trending]=true [comment]="'Above Expectation'"></data-card>
         </div>
       </div>
       <div class="p-4 md:w-1/4">
         <div class="h-full overflow-hidden bg-gray-300 rounded-lg">
-          <data-card [title]="'GLOSS'" [amount]="14" [trending]=true [comment]="'meeting expectation'"></data-card>
+          <data-card [header]= "'Service Requests'" [title]="'Open'" [amount]="15" [trending]=true [comment]="'Above Expectation'"></data-card>
         </div>
       </div>
     </div>

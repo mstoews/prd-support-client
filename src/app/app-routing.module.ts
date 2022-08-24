@@ -22,9 +22,7 @@ const routes: Route[] = [
   // {
   //   path: 'kanban',
   //   loadChildren: () =>
-  //     import('./components/kanban-tracking/module/kanban.module').then(
-  //       (m) => m.KanbanTasksModule
-  //     ),
+  //     import('./modules/tasks/module/kanban.module').then((mod) => mod.KanbanTasksModule ),
   //   // canActivate: [AuthGuard],
   // },
 ];
